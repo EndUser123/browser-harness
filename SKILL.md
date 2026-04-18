@@ -53,6 +53,22 @@ command -v bh
 
 That keeps the command global while still pointing at the real repo checkout, so when the agent edits `helpers.py` the next `bh` run uses the new code immediately. `browser-harness` is the readable alias for the same command.
 
+Default to this global setup. Use the local-only flow below only for quick testing inside the repo.
+
+### Make it global for the current agent
+
+After the repo is installed, register this repo's `SKILL.md` with the agent you are using:
+
+- **Codex**: add this file as a global skill at `$CODEX_HOME/skills/browser-harness/SKILL.md` (often `~/.codex/skills/browser-harness/SKILL.md`). A symlink to this repo's `SKILL.md` is fine.
+- **Claude Code**: add an import to `~/.claude/CLAUDE.md` that points at this repo's `SKILL.md`, for example `@~/src/harnessless/SKILL.md`.
+
+That makes new Codex or Claude Code sessions in other folders load the browser harness instructions automatically.
+
+To confirm the memory/instructions are loaded:
+
+- **Codex**: start a new session and check that `browser-harness` appears in the available skills.
+- **Claude Code**: run `/memory` and confirm that `~/.claude/CLAUDE.md` and its import are listed.
+
 ### Simplest local setup
 
 1. Run `uv sync`.
