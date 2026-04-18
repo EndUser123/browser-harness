@@ -4,8 +4,20 @@ URL: `https://www.tiktok.com/tiktokstudio/upload?from=upload&lang=en` (always ap
 
 ## Prerequisites
 
-- Logged into TikTok in the Chrome profile harnessless is attached to
+- Logged into TikTok in the Chrome profile browser-harness is attached to
 - Video file on local disk (mp4, <50MB)
+- See `interaction-skills/connection.md` for daemon startup checklist
+
+## Before starting: ensure visibility
+
+The user MUST be able to see the browser tab. See `interaction-skills/connection.md` for details. Quick version:
+
+```python
+tab = ensure_real_tab()
+cdp("Target.activateTarget", targetId=tab["targetId"])  # bring to front
+goto("https://www.tiktok.com/tiktokstudio/upload?from=upload&lang=en")
+# NEVER use new_tab() — it creates invisible tabs
+```
 
 ## Stale draft banner
 

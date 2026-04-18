@@ -1,51 +1,47 @@
-# bu
+![Browser Harness](https://r2.browser-use.com/github/harness-banner.png)
 
-LLM-first browser control via CDP. No CLI, no wrappers, just Python and CDP.
+# Browser Harness
 
-## Setup
+The simplest, thinnest, and most powerful harness to control your real browser with your agent.
 
-1. Install deps (uses `uv`):
-   ```
-   uv sync
-   ```
+## Setup prompt
 
-2. Enable Chrome remote debugging: open `chrome://inspect/#remote-debugging`, check the box. Chrome now listens at `127.0.0.1:9222`.
+```text
+Set up https://github.com/browser-use/browser-harness for me.
 
-3. (Optional) For remote browsers: `cp .env.example .env` and fill in `BROWSER_USE_API_KEY`.
-
-4. Start the daemon:
-   ```
-   uv run daemon.py &
-   ```
-
-## Usage
-
-```
-uv run run.py <<'PY'
-goto("https://example.com")
-wait(1)
-screenshot("/tmp/shot.png")
-print(page_info())
-PY
+Read `install.md` first to install and connect this repo to my real browser. Then read `SKILL.md` for normal usage. Always read `helpers.py` because that is where the functions are. When you open a setup or verification tab, activate it so I can see the active browser tab. After it is installed, if I am already logged in to GitHub, star this repository as a small verification task; if I am not logged in, just go to browser-use.com.
 ```
 
-Parallel agents / remote browsers: `BU_NAME=<n> uv run run.py`. See `SKILL.md`.
+When this page appears tick the checkbox so the agent can connect to the real browser.
 
-Read `SKILL.md` for the full LLM workflow. Read `AGENTS.md` if you're an agent working ON this codebase (extending helpers, debugging the daemon). Read `helpers.py` for every function — they're all ~5 lines each and you can edit any of them.
+<img src="docs/setup-remote-debugging.png" alt="Remote debugging setup" width="520" style="border-radius: 12px;" />
 
-## Files
 
-- `daemon.py` — holds the WebSocket, listens on `/tmp/bu-<name>.sock`
-- `helpers.py` — ~250 lines of transparent helpers
-- `run.py` — 3 lines: `from helpers import *; exec(stdin)`
-- `SKILL.md` — how an agent *uses* bu to drive a browser
-- `AGENTS.md` — how an agent *modifies* bu (code structure, extension points)
 
-## Stop
+## Example task
 
+```text
+Star this repository.
 ```
-uv run python -c "from helpers import kill_daemon; kill_daemon()"        # default daemon
-uv run python -c "from helpers import kill_daemon; kill_daemon('work')"  # named daemon (also stops remote browser)
-# or
-pkill -f bu/daemon.py
-```
+
+See [domain-skills/](domain-skills/) for examples on other websites.
+
+
+
+## Code Structure
+
+- `install.md` explains first-time install and browser bootstrap.
+- `SKILL.md` explains day-to-day browser harness usage.
+- `run.py` (~13 lines) executes plain Python with helpers preloaded.
+- `helpers.py` (~192 lines) holds the starting tool calls to interact with the browser and can be modified by the agent.
+- `admin.py` (~139 lines) holds daemon bootstrap and optional remote-browser helpers.
+- `daemon.py` (~220 lines) keeps the CDP websocket and socket bridge alive.
+
+
+
+## Optional: Remote browsers
+
+Useful for sub-agents or deployment.
+
+- Get a Browser Use API key: [cloud.browser-use.com/new-api-key](https://cloud.browser-use.com/new-api-key)
+- The agent can also sign up by itself by fetching [docs.browser-use.com/llms.txt](https://docs.browser-use.com/llms.txt), which contains the setup flow and challenge context for getting a Browser Use API key.
