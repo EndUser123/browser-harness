@@ -72,8 +72,8 @@ osascript -e 'tell application "Google Chrome" to activate' \
 ```bash
 uv run bh <<'PY'
 ensure_real_tab()
-if not current_tab()["url"] or current_tab()["url"].startswith(INTERNAL):
-    new_tab("https://github.com/browser-use/browser-harness")
+goto("https://github.com/browser-use/browser-harness")
+wait_for_load()
 print(page_info())
 PY
 ```
@@ -82,8 +82,8 @@ If that fails with a stale websocket or stale socket, restart the daemon once an
 
 ```bash
 uv run python - <<'PY'
-from admin import restart_daemon
-restart_daemon()
+from helpers import kill_daemon
+kill_daemon()
 PY
 ```
 
