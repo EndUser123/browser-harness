@@ -42,6 +42,8 @@ def check_main():
     try:
         import helpers
         helpers.ensure_daemon(wait=5.0)
+        if not helpers.ensure_real_tab():
+            helpers.new_tab("about:blank")
         print(json.dumps(helpers.page_info(), indent=2))
     except Exception as e:
         raise SystemExit(str(e))

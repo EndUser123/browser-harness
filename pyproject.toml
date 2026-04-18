@@ -13,12 +13,12 @@ dependencies = [
 ]
 
 [project.scripts]
-bu = "run:main"
-harnessless = "run:main"
-harnessless-kill = "admin:kill_main"
-harnessless-remote = "admin:remote_main"
-harnessless-open-debugging = "admin:open_debugging_main"
-harnessless-check = "admin:check_main"
+bh = "run:main"
+browser-harness = "run:main"
+bh-kill = "admin:kill_main"
+bh-remote = "admin:remote_main"
+bh-open-debugging = "admin:open_debugging_main"
+bh-check = "admin:check_main"
 
 [tool.setuptools]
 py-modules = ["run", "helpers", "daemon", "admin"]
