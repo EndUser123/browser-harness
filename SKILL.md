@@ -58,7 +58,7 @@ print(page_info())
 PY
 ```
 
-**Paste the `liveUrl` to the user as soon as you get it** — it's a watch-along link so they can see the remote browser in real time. For a local daemon the 🟢 on the tab title is the equivalent: mention which tab you attached to so the user can find it.
+Share the `liveUrl` with the user — it's a watch-along link.
 
 Leaving a remote daemon running bills until the session timeout.
 
