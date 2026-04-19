@@ -75,6 +75,7 @@ Only if you start struggling with a specific mechanic while navigating, look in 
 - `dropdowns.md`
 - `iframes.md`
 - `network-requests.md`
+- `permissions.md`
 - `print-as-pdf.md`
 - `screenshots.md`
 - `scrolling.md`
