@@ -483,14 +483,17 @@ def run_setup():
 def run_doctor():
     """Read-only diagnostics. Exit 0 iff everything looks healthy."""
     import platform, shutil, sys
-    cur = _version() or "(unknown)"
+    cur = _version()
     mode = _install_mode()
     chrome = _chrome_running()
     daemon = daemon_alive()
     profile_use = shutil.which("profile-use") is not None
     api_key = bool(os.environ.get("BROWSER_USE_API_KEY"))
     latest = _latest_release_tag()
+    # Only claim an update when we know the installed version — `cur or "(unknown)"`
+    # for display would otherwise be parsed as (0,) and flag every latest as newer.
     newer = bool(cur and latest and _version_tuple(latest) > _version_tuple(cur))
+    cur_display = cur or "(unknown)"
 
     def row(label, ok, detail=""):
         mark = "ok  " if ok else "FAIL"
@@ -499,7 +502,7 @@ def run_doctor():
     print("browser-harness doctor")
     print(f"  platform          {platform.system()} {platform.release()}")
     print(f"  python            {sys.version.split()[0]}")
-    print(f"  version           {cur} ({mode})")
+    print(f"  version           {cur_display} ({mode})")
     if latest:
         print(f"  latest release    {latest}" + (" (update available)" if newer else ""))
     else:
@@ -531,11 +534,15 @@ def run_update(yes=False):
     Exit 0 on success, non-zero on failure."""
     import subprocess, sys
     cur, latest, newer = check_for_update()
-    if latest and not newer:
+    # Only short-circuit as "up to date" when we actually know the installed
+    # version. Otherwise `newer=False` just means "couldn't compare" — proceed.
+    if cur and latest and not newer:
         print(f"browser-harness is up to date ({cur}).")
         return 0
-    if latest:
+    if cur and latest:
         print(f"updating browser-harness: {cur} -> {latest}")
+    elif latest:
+        print(f"installed version unknown; will try to update to {latest}.")
     else:
         print("could not reach github; will try to update anyway.")
 
