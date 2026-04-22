@@ -1,7 +1,15 @@
 import sys
 
+# Windows cp1252 console can't encode emoji (e.g. 🟢 tab marker). Force UTF-8.
+if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if sys.stderr and hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 from admin import (
+    close_browser,
     ensure_daemon,
+    launch_browser,
     list_cloud_profiles,
     list_local_profiles,
     restart_daemon,

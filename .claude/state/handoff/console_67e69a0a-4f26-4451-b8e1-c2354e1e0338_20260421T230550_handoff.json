@@ -1,0 +1,134 @@
+{
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "25c6538d-1aef-47ed-9c67-86e0c739210d",
+    "terminal_id": "console_67e69a0a-4f26-4451-b8e1-c2354e1e0338",
+    "source_session_id": "8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2",
+    "created_at": "2026-04-21T23:05:50.770228+00:00",
+    "expires_at": "2026-04-21T23:25:50.770228+00:00",
+    "status": "rejected_stale",
+    "goal": "What should we do with these?  \ndomain-skills\ninteraction-skills",
+    "current_task": "What should we do with these? domain-skills interaction-skills",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.css",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/manifest.json",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.html",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.css",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.js",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/service-worker.js"
+    ],
+    "pending_operations": [
+      {
+        "type": "command",
+        "target": "ls -la \"C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: command on ls -la \"C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm.",
+    "decision_refs": [
+      "dec_d69ba4557f9d4d9f92ec15c49d95a34c"
+    ],
+    "evidence_refs": [
+      "ev_e4e2d2f9306f4aa788686a6debffa05e",
+      "ev_f3872bc82d9f4578916aec87f67ec365",
+      "ev_a52f99c11196469a8323319dddfc307b",
+      "ev_45ec7f0f042247a4bde47d600b76e587",
+      "ev_2ebc356a71fe4720b0b6e996193f3550",
+      "ev_1ca18fe8a94c4c9192986d4ddc268553"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "question",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "rejected_at": "2026-04-21T23:07:37.626927+00:00",
+    "rejected_by_session_id": "8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [
+    {
+      "id": "dec_d69ba4557f9d4d9f92ec15c49d95a34c",
+      "kind": "constraint",
+      "summary": "don't the browser harnes install instructions talk about the skills?",
+      "details": "don't the browser harnes install instructions talk about the skills?",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_e4e2d2f9306f4aa788686a6debffa05e"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_e4e2d2f9306f4aa788686a6debffa05e",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2.jsonl",
+      "content_hash": "sha256:9aa92c29e8a6429b15ccd0d96c200300b9386b02c543e7302827ce54cd2904b9"
+    },
+    {
+      "id": "ev_f3872bc82d9f4578916aec87f67ec365",
+      "type": "file",
+      "label": "service-worker.js",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+      "content_hash": "sha256:e9b4d19fc37715807ab4d646f1380feebfb4ebdb6404a6d1a06d8a1f39b48587"
+    },
+    {
+      "id": "ev_a52f99c11196469a8323319dddfc307b",
+      "type": "file",
+      "label": "manifest.json",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+      "content_hash": "sha256:0df993b452de22a72740583a0aab8a9ba45d7f4f4163e39d0bc4b9e064cd7972"
+    },
+    {
+      "id": "ev_45ec7f0f042247a4bde47d600b76e587",
+      "type": "file",
+      "label": "sidepanel.js",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+      "content_hash": "sha256:8c8900037f61d8ef8f5b478247759df910c2e8ecf214719f9de1619a3c00da59"
+    },
+    {
+      "id": "ev_2ebc356a71fe4720b0b6e996193f3550",
+      "type": "file",
+      "label": "sidepanel.html",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+      "content_hash": "sha256:03d5b81b7a31d42dad885ff4d0c35c8ed1754cba25b150ea42aa05316d9ba2d0"
+    },
+    {
+      "id": "ev_1ca18fe8a94c4c9192986d4ddc268553",
+      "type": "file",
+      "label": "sidepanel.css",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.css",
+      "content_hash": "sha256:f19d84aacb977bef5c5d79a551d8bb124f5342182605f1ee22215bdf271a86e1"
+    }
+  ],
+  "checksum": "sha256:1ad6c0447bd62b270b26b5dd9a92c4f5b509747c1339a4f5c629b158d7d1636a"
+}

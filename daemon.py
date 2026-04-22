@@ -3,6 +3,7 @@ import asyncio, json, os, socket, sys, time, urllib.request
 from collections import deque
 from pathlib import Path
 
+from _compat import paths as _paths, start_server as _start_server, remove_transport
 from cdp_use.client import CDPClient
 
 
@@ -21,9 +22,7 @@ def _load_env():
 _load_env()
 
 NAME = os.environ.get("BU_NAME", "default")
-SOCK = f"/tmp/bu-{NAME}.sock"
-LOG = f"/tmp/bu-{NAME}.log"
-PID = f"/tmp/bu-{NAME}.pid"
+SOCK, PID, LOG = _paths(NAME)
 BUF = 500
 PROFILES = [
     Path.home() / "Library/Application Support/Google/Chrome",
@@ -58,31 +57,68 @@ def log(msg):
     open(LOG, "a").write(f"{msg}\n")
 
 
+def _discover_ws_url(host: str, port: int) -> str:
+    """Auto-discover the full WS debugger URL from Chrome's /json/version endpoint."""
+    import urllib.request, json as _json
+    url = f"http://{host}:{port}/json/version"
+    info = _json.loads(urllib.request.urlopen(url, timeout=5).read())
+    return info["webSocketDebuggerUrl"]
+
+
 def get_ws_url():
     if url := os.environ.get("BU_CDP_WS"):
+        # If just host:port (no UUID path), auto-discover the full WS URL
+        if "/devtools/browser/" not in url:
+            url = url.removeprefix("ws://")
+            host, _, port = url.partition(":")
+            port = port.rstrip("/")
+            return _discover_ws_url(host or "127.0.0.1", int(port))
         return url
     for base in PROFILES:
+        # Check base dir first (macOS/Linux), then common profile subdirs (Windows)
+        candidates = [base]
         try:
-            port, path = (base / "DevToolsActivePort").read_text().strip().split("\n", 1)
-        except (FileNotFoundError, NotADirectoryError):
-            continue
-        deadline = time.time() + 30
-        while True:
-            probe = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            probe.settimeout(1)
+            for child in base.iterdir():
+                if child.is_dir() and (child / "DevToolsActivePort").exists():
+                    candidates.insert(0, child)
+        except (FileNotFoundError, NotADirectoryError, PermissionError):
+            pass
+        for candidate in candidates:
             try:
-                probe.connect(("127.0.0.1", int(port.strip())))
-                break
-            except OSError:
-                if time.time() >= deadline:
-                    raise RuntimeError(
-                        f"Chrome's remote-debugging page is open, but DevTools is not live yet on 127.0.0.1:{port.strip()} — if Chrome opened a profile picker, choose your normal profile first, then tick the checkbox and click Allow if shown"
-                    )
-                time.sleep(1)
-            finally:
-                probe.close()
-        return f"ws://127.0.0.1:{port.strip()}{path.strip()}"
-    raise RuntimeError(f"DevToolsActivePort not found in {[str(p) for p in PROFILES]} — enable chrome://inspect/#remote-debugging, or set BU_CDP_WS for a remote browser")
+                content = (candidate / "DevToolsActivePort").read_text().strip()
+                parts = content.split("\n", 1)
+                if len(parts) != 2:
+                    continue
+                port, path = parts
+            except (FileNotFoundError, NotADirectoryError):
+                continue
+            deadline = time.time() + 30
+            while True:
+                probe = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                probe.settimeout(1)
+                try:
+                    probe.connect(("127.0.0.1", int(port.strip())))
+                    break
+                except OSError:
+                    if time.time() >= deadline:
+                        raise RuntimeError(
+                            f"Chrome's remote-debugging page is open, but DevTools is not live yet on 127.0.0.1:{port.strip()} — if Chrome opened a profile picker, choose your normal profile first, then tick the checkbox and click Allow if shown"
+                        )
+                    time.sleep(1)
+                finally:
+                    probe.close()
+            # Resolve via /json/version — the file's UUID can be stale on Windows
+            try:
+                return _discover_ws_url("127.0.0.1", int(port.strip()))
+            except Exception:
+                return f"ws://127.0.0.1:{port.strip()}{path.strip()}"
+    # Fallback: probe common debugging ports via /json/version (Windows often loses DevToolsActivePort)
+    for port in (9222, 9229, 9223, 9224, 9225, 9333):
+        try:
+            return _discover_ws_url("127.0.0.1", port)
+        except Exception:
+            pass
+    raise RuntimeError(f"DevToolsActivePort not found in {[str(p) for p in PROFILES]} and no CDP port responding — enable chrome://inspect/#remote-debugging, or set BU_CDP_WS for a remote browser")
 
 
 def stop_remote():
@@ -192,9 +228,6 @@ class Daemon:
 
 
 async def serve(d):
-    if os.path.exists(SOCK):
-        os.unlink(SOCK)
-
     async def handler(reader, writer):
         try:
             line = await reader.readline()
@@ -212,8 +245,7 @@ async def serve(d):
         finally:
             writer.close()
 
-    server = await asyncio.start_unix_server(handler, path=SOCK)
-    os.chmod(SOCK, 0o600)
+    server = await _start_server(handler, NAME)
     log(f"listening on {SOCK} (name={NAME}, remote={REMOTE_ID or 'local'})")
     async with server:
         await d.stop.wait()
@@ -226,11 +258,8 @@ async def main():
 
 
 def already_running():
-    try:
-        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM); s.settimeout(1)
-        s.connect(SOCK); s.close(); return True
-    except (FileNotFoundError, ConnectionRefusedError, socket.timeout):
-        return False
+    from _compat import daemon_alive
+    return daemon_alive(NAME)
 
 
 if __name__ == "__main__":
@@ -248,5 +277,4 @@ if __name__ == "__main__":
         sys.exit(1)
     finally:
         stop_remote()
-        try: os.unlink(PID)
-        except FileNotFoundError: pass
+        remove_transport(NAME)

@@ -1,9 +1,12 @@
 import json
 import os
 import socket
+import tempfile
 import time
 import urllib.request
 from pathlib import Path
+
+from _compat import client_connect, daemon_alive as _daemon_alive, paths, _tmpdir, remove_transport
 
 
 def _load_env():
@@ -22,46 +25,59 @@ _load_env()
 
 NAME = os.environ.get("BU_NAME", "default")
 BU_API = "https://api.browser-use.com/api/v3"
-
-
-def _paths(name):
-    n = name or NAME
-    return f"/tmp/bu-{n}.sock", f"/tmp/bu-{n}.pid"
+MAX_INSTANCES = 8
+BASE_PORT = 9222
+PROFILE_BASE = Path(os.environ.get("LOCALAPPDATA", tempfile.gettempdir())) / "browser-harness"
 
 
 def _log_tail(name):
-    p = f"/tmp/bu-{name or NAME}.log"
+    _, _, log_path = paths(name or NAME)
     try:
-        return Path(p).read_text().strip().splitlines()[-1]
+        return Path(log_path).read_text().strip().splitlines()[-1]
     except (FileNotFoundError, IndexError):
         return None
 
 
 def daemon_alive(name=None):
-    try:
-        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        s.settimeout(1)
-        s.connect(_paths(name)[0])
-        s.close()
-        return True
-    except (FileNotFoundError, ConnectionRefusedError, socket.timeout):
-        return False
+    return _daemon_alive(name or NAME)
 
 
 def ensure_daemon(wait=60.0, name=None, env=None):
-    """Idempotent. `env` is merged into the child process env."""
+    """Idempotent. `env` is merged into the child process env.
+
+    If no Chrome with CDP is found and BU_CDP_WS isn't set, launches a
+    dedicated Chrome instance via launch_browser().
+    """
     if daemon_alive(name):
         return
     import subprocess
 
+    # If no explicit CDP target, try to find or launch a browser
+    effective_name = name or NAME
+    has_cdp_target = bool(env and env.get("BU_CDP_WS")) or bool(os.environ.get("BU_CDP_WS"))
+    if not has_cdp_target:
+        # Check if an existing Chrome already has CDP (devtools active)
+        from daemon import get_ws_url
+        try:
+            get_ws_url()
+        except RuntimeError:
+            # No existing CDP — launch our own Chrome instance
+            browser = launch_browser(effective_name)
+            env = {**(env or {}), "BU_CDP_WS": browser["ws_url"]}
+
     e = {**os.environ, **({"BU_NAME": name} if name else {}), **(env or {})}
+    popen_kwargs: dict = {}
+    if os.name == "nt":
+        popen_kwargs["creationflags"] = 0x00000200 | 0x08000000  # CREATE_NEW_PROCESS_GROUP | CREATE_NO_WINDOW
+    else:
+        popen_kwargs["start_new_session"] = True
     p = subprocess.Popen(
         ["uv", "run", "daemon.py"],
         cwd=os.path.dirname(os.path.abspath(__file__)),
         env=e,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
-        start_new_session=True,
+        **popen_kwargs,
     )
     deadline = time.time() + wait
     while time.time() < deadline:
@@ -71,7 +87,8 @@ def ensure_daemon(wait=60.0, name=None, env=None):
             break
         time.sleep(0.2)
     msg = _log_tail(name)
-    raise RuntimeError(msg or f"daemon {name or NAME} didn't come up -- check /tmp/bu-{name or NAME}.log")
+    _, _, log_path = paths(name or NAME)
+    raise RuntimeError(msg or f"daemon {name or NAME} didn't come up -- check {log_path}")
 
 
 def stop_remote_daemon(name="remote"):
@@ -96,11 +113,9 @@ def restart_daemon(name=None):
     ensure_daemon(). The function itself only stops."""
     import signal
 
-    sock, pid_path = _paths(name)
+    _, pid_path, _ = paths(name or NAME)
     try:
-        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        s.settimeout(5)
-        s.connect(sock)
+        s = client_connect(name or NAME)
         s.sendall(b'{"meta":"shutdown"}\n')
         s.recv(1024)
         s.close()
@@ -115,18 +130,16 @@ def restart_daemon(name=None):
             try:
                 os.kill(pid, 0)
                 time.sleep(0.2)
-            except ProcessLookupError:
+            except (ProcessLookupError, OSError):
                 break
         else:
             try:
                 os.kill(pid, signal.SIGTERM)
-            except ProcessLookupError:
+            except (ProcessLookupError, OSError):
                 pass
-    for f in (sock, pid_path):
-        try:
-            os.unlink(f)
-        except FileNotFoundError:
-            pass
+    # Gracefully close our launched Chrome instance (if any)
+    close_browser(name)
+    remove_transport(name or NAME)
 
 
 def _browser_use(path, method, body=None):
@@ -155,6 +168,193 @@ def _has_local_gui():
     if system == "Linux":
         return bool(os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY"))
     return False
+
+
+def _chrome_exe() -> str:
+    """Find the Chrome executable on this system."""
+    import platform, shutil
+    system = platform.system()
+    if system == "Windows":
+        for p in [
+            os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
+            os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
+            os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe"),
+        ]:
+            if os.path.isfile(p):
+                return p
+    elif system == "Darwin":
+        p = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        if os.path.isfile(p):
+            return p
+    else:
+        p = shutil.which("google-chrome") or shutil.which("chromium-browser") or shutil.which("chrome")
+        if p:
+            return p
+    raise RuntimeError("Chrome not found — install Google Chrome or set BU_CDP_WS manually")
+
+
+def _port_alive(port: int) -> bool:
+    s = socket.socket()
+    s.settimeout(0.5)
+    try:
+        s.connect(("127.0.0.1", port))
+        s.close()
+        return True
+    except (ConnectionRefusedError, socket.timeout, OSError):
+        return False
+
+
+def _fix_exit_type(profile_dir: Path):
+    """Set exit_type=Normal in a Chrome profile so no 'restore pages' bubble appears."""
+    try:
+        prefs_path = profile_dir / "Default" / "Preferences"
+        if prefs_path.exists():
+            p = json.loads(prefs_path.read_text())
+            p.setdefault("profile", {})["exited_cleanly"] = True
+            p["profile"]["exit_type"] = "Normal"
+            prefs_path.write_text(json.dumps(p))
+    except Exception:
+        pass
+
+
+def launch_browser(name: str = None) -> dict:
+    """Launch a dedicated Chrome instance for the harness.
+
+    Creates a fresh profile under %LOCALAPPDATA%/browser-harness/<name>/,
+    picks a free port from BASE_PORT..BASE_PORT+MAX_INSTANCES-1,
+    starts Chrome, and returns {port, profile_dir, ws_url}.
+
+    Raises RuntimeError if all slots are taken.
+    """
+    import subprocess
+    name = name or NAME
+    profile_dir = PROFILE_BASE / name
+    profile_dir.mkdir(parents=True, exist_ok=True)
+
+    # Fix stale crash state so no "restore pages" bubble appears
+    _fix_exit_type(profile_dir)
+
+    # Find a free port slot
+    port = None
+    for p in range(BASE_PORT, BASE_PORT + MAX_INSTANCES):
+        if not _port_alive(p):
+            port = p
+            break
+    if port is None:
+        raise RuntimeError(
+            f"All {MAX_INSTANCES} browser harness slots ({BASE_PORT}-{BASE_PORT + MAX_INSTANCES - 1}) are in use"
+        )
+
+    chrome = _chrome_exe()
+    args = [
+        chrome,
+        f"--remote-debugging-port={port}",
+        f"--user-data-dir={profile_dir}",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-timer-throttling",
+        "about:blank",
+    ]
+    popen_kwargs: dict = {}
+    if os.name == "nt":
+        popen_kwargs["creationflags"] = 0x00000200 | 0x08000000  # CREATE_NEW_PROCESS_GROUP | CREATE_NO_WINDOW
+    else:
+        popen_kwargs["start_new_session"] = True
+    proc = subprocess.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, **popen_kwargs)
+
+    # Wait for Chrome to be ready
+    deadline = time.time() + 30
+    ws_url = None
+    while time.time() < deadline:
+        if _port_alive(port):
+            try:
+                import urllib.request as _ur
+                info = json.loads(_ur.urlopen(f"http://127.0.0.1:{port}/json/version", timeout=3).read())
+                ws_url = info["webSocketDebuggerUrl"]
+                break
+            except Exception:
+                pass
+        time.sleep(0.5)
+    if not ws_url:
+        raise RuntimeError(f"Chrome started on port {port} but /json/version never responded")
+
+    # Persist Chrome PID so we can close it gracefully later
+    _, pid_path, _ = paths(name)
+    chrome_pid_path = pid_path.replace(".pid", ".chrome-pid")
+    open(chrome_pid_path, "w").write(str(proc.pid))
+
+    return {"port": port, "profile_dir": str(profile_dir), "ws_url": ws_url}
+
+
+def close_browser(name: str = None):
+    """Gracefully close a Chrome instance launched by launch_browser().
+
+    Sends Browser.close via CDP first, then waits. Falls back to SIGTERM.
+    Also fixes the profile's exit_type so no 'restore pages' bubble appears.
+    """
+    import signal
+    name = name or NAME
+
+    # Read persisted Chrome PID
+    _, pid_path, _ = paths(name)
+    chrome_pid_path = pid_path.replace(".pid", ".chrome-pid")
+    try:
+        chrome_pid = int(open(chrome_pid_path).read().strip())
+    except (FileNotFoundError, ValueError):
+        chrome_pid = None
+
+    # Try graceful CDP Browser.close first
+    if chrome_pid:
+        try:
+            port = None
+            for p in range(BASE_PORT, BASE_PORT + MAX_INSTANCES):
+                if _port_alive(p):
+                    try:
+                        url = f"http://127.0.0.1:{p}/json/version"
+                        info = json.loads(urllib.request.urlopen(url, timeout=2).read())
+                        port = p
+                        break
+                    except Exception:
+                        pass
+            if port:
+                # Send Browser.close via HTTP (lighter than opening a WS)
+                try:
+                    urllib.request.urlopen(
+                        urllib.request.Request(
+                            f"http://127.0.0.1:{port}/json/protocol",
+                            data=json.dumps({"id": 1, "method": "Browser.close"}).encode(),
+                            headers={"Content-Type": "application/json"},
+                            method="POST",
+                        ),
+                        timeout=5,
+                    )
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+        # Wait for Chrome to exit gracefully
+        for _ in range(20):
+            try:
+                os.kill(chrome_pid, 0)
+                time.sleep(0.5)
+            except (ProcessLookupError, OSError):
+                break
+        else:
+            # Still running — SIGTERM as fallback
+            try:
+                os.kill(chrome_pid, signal.SIGTERM)
+            except (ProcessLookupError, OSError):
+                pass
+
+    # Fix profile exit_type so no "restore pages" bubble appears
+    _fix_exit_type(PROFILE_BASE / name)
+
+    # Clean up PID file
+    try:
+        os.unlink(chrome_pid_path)
+    except FileNotFoundError:
+        pass
 
 
 def _show_live_url(url):

@@ -1,0 +1,134 @@
+{
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "2ed0216e-04c2-4ff3-9f79-2e95b1d89644",
+    "terminal_id": "console_67e69a0a-4f26-4451-b8e1-c2354e1e0338",
+    "source_session_id": "8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2",
+    "created_at": "2026-04-21T21:09:51.877437+00:00",
+    "expires_at": "2026-04-21T21:29:51.877437+00:00",
+    "status": "rejected_stale",
+    "goal": "We're going to have to make it pick the Bruce profile automatically if that keeps showing up.",
+    "current_task": "We're going to have to make it pick the Bruce profile automatically if that keeps showing up.",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+      "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.css",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/manifest.json",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.html",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.css",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/sidepanel.js",
+      "C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm-bulk-delete/service-worker.js"
+    ],
+    "pending_operations": [
+      {
+        "type": "command",
+        "target": "ls -la \"C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: command on ls -la \"C:/Users/brsth/Downloads/notebooklm-bulk-delete-extension (2)/notebooklm.",
+    "decision_refs": [
+      "dec_30dd24c1ccb94e09b37cb8f771192d21"
+    ],
+    "evidence_refs": [
+      "ev_e008b0b106fa433183cb2f665fab84fc",
+      "ev_6baec310efa24c42bfaa22af7ad1ff2b",
+      "ev_3f455389e7ad48a28faf5c983f7477b6",
+      "ev_2c506d5228af4e7bab0cdd69d8c33a10",
+      "ev_d8ab46895b744336b93b5017aa95da48",
+      "ev_5febe0916fe6492a881a51d10131b694"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "instruction",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "rejected_at": "2026-04-21T21:11:26.600341+00:00",
+    "rejected_by_session_id": "8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [
+    {
+      "id": "dec_30dd24c1ccb94e09b37cb8f771192d21",
+      "kind": "constraint",
+      "summary": "DevToolsActivePort is there with port 56573. The remote debugging checkbox must have been sticky from your earlier session. Let me try the harness.",
+      "details": "DevToolsActivePort is there with port 56573. The remote debugging checkbox must have been sticky from your earlier session. Let me try the harness.",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_e008b0b106fa433183cb2f665fab84fc"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_e008b0b106fa433183cb2f665fab84fc",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8d5aa3c8-5dbd-4af1-85cf-2bd6de6258e2.jsonl",
+      "content_hash": "sha256:50675f26bed53c0865cd2acc373d185ad6f849ec8af9a6ee365156f8be0b1747"
+    },
+    {
+      "id": "ev_6baec310efa24c42bfaa22af7ad1ff2b",
+      "type": "file",
+      "label": "service-worker.js",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\service-worker.js",
+      "content_hash": "sha256:e9b4d19fc37715807ab4d646f1380feebfb4ebdb6404a6d1a06d8a1f39b48587"
+    },
+    {
+      "id": "ev_3f455389e7ad48a28faf5c983f7477b6",
+      "type": "file",
+      "label": "manifest.json",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\manifest.json",
+      "content_hash": "sha256:0df993b452de22a72740583a0aab8a9ba45d7f4f4163e39d0bc4b9e064cd7972"
+    },
+    {
+      "id": "ev_2c506d5228af4e7bab0cdd69d8c33a10",
+      "type": "file",
+      "label": "sidepanel.js",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.js",
+      "content_hash": "sha256:8c8900037f61d8ef8f5b478247759df910c2e8ecf214719f9de1619a3c00da59"
+    },
+    {
+      "id": "ev_d8ab46895b744336b93b5017aa95da48",
+      "type": "file",
+      "label": "sidepanel.html",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.html",
+      "content_hash": "sha256:03d5b81b7a31d42dad885ff4d0c35c8ed1754cba25b150ea42aa05316d9ba2d0"
+    },
+    {
+      "id": "ev_5febe0916fe6492a881a51d10131b694",
+      "type": "file",
+      "label": "sidepanel.css",
+      "path": "C:\\Users\\brsth\\Downloads\\notebooklm-bulk-delete-extension (2)\\notebooklm-bulk-delete\\sidepanel.css",
+      "content_hash": "sha256:f19d84aacb977bef5c5d79a551d8bb124f5342182605f1ee22215bdf271a86e1"
+    }
+  ],
+  "checksum": "sha256:239964ed2d3896dd9fa47afb0dd1a2624427339d048cb4336070897c263e9676"
+}
