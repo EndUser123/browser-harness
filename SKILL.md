@@ -9,18 +9,17 @@ Easiest and most powerful way to interact with the browser. **Read this file in 
 
 ## Fast start
 
-Read `helpers.py` first. For first-time install or reconnect/bootstrap, read `install.md` first.
-
 ```bash
-browser-harness <<'PY'
+cd "P:/packages/.github_repos/browser-harness" && uv run bh <<'PY'
 new_tab("https://docs.browser-use.com")
 wait_for_load()
 print(page_info())
 PY
 ```
 
-- Invoke as `browser-harness` — it's on `$PATH`. No `cd`, no `uv run`.
-- First navigation is `new_tab(url)`, not `goto(url)` — `goto` runs in the user's active tab and clobbers their work.
+- `bh` = `python run.py` — the console script entry point via `uv run`
+- Always `cd` to the harness directory first — the binary is not on `$PATH`
+- First navigation is `new_tab(url)`, not `goto(url)` — `goto` runs in the user's active tab and clobbers their work
 
 The code is the doc.
 

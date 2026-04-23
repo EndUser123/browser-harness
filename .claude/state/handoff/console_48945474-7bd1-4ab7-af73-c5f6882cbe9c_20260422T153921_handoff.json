@@ -1,0 +1,128 @@
+{
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "9413a1ad-01e8-4b01-8412-645ab33d4b6e",
+    "terminal_id": "console_48945474-7bd1-4ab7-af73-c5f6882cbe9c",
+    "source_session_id": "8a7b83ff-7d98-47e9-b3b5-3ffabc978c40",
+    "created_at": "2026-04-22T15:39:21.661414+00:00",
+    "expires_at": "2026-04-22T15:59:21.661414+00:00",
+    "status": "consumed",
+    "goal": "Please debug this problem.  We should be able to use the browser harness anytime we want. Please consider creating a skill if needed.",
+    "current_task": "Please debug this problem. We should be able to use the browser harness anytime we want. Please consider creating a skill if needed.",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/.claude/worktrees/go-v2-artifact/.claude/skills/go/SKILL.md",
+      "P:/.claude/worktrees/go-v2-artifact/.claude/skills/go/ralph-go-loop.sh",
+      "P:/.claude/worktrees/go-v2-artifact/.claude/skills/go/go-safe.sh",
+      "P:/packages/cc-skills-sdlc/skills/go_new/schemas/selected-task.schema.json",
+      "P:/packages/cc-skills-sdlc/skills/go_new/schemas/run.schema.json",
+      "P:/packages/cc-skills-sdlc/skills/go_new/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go_new/schemas/active-task.schema.json",
+      "P:/packages/cc-skills-sdlc/skills/go_new/schemas/task-result.schema.json",
+      "P:/packages/cc-skills-sdlc/skills/go_new/schemas/pr-ready.schema.json",
+      "C:\\Users\\brsth\\Downloads\\My design skill made some lazy errors.  __❯ _think (1).md"
+    ],
+    "pending_operations": [
+      {
+        "type": "command",
+        "target": "ls P:/.claude/skills/go/ && echo \"---\" && git -C P:/ worktree list",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "git -C P:/ branch --show-current && git -C P:/ status --short",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "git -C P:/ worktree add .claude/worktrees/go-v2-artifact P:/main -- 2>/dev/null ",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/.claude/worktrees/go-v2-artifact/.claude/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/.claude/worktrees/go-v2-artifact/.claude/skills/go/ralph-go-loop.sh",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: command on ls P:/.claude/skills/go/ && echo \"---\" && git -C P:/ worktree list.",
+    "decision_refs": [
+      "dec_beca07a847d643e8a698cf659da4e80c"
+    ],
+    "evidence_refs": [
+      "ev_0bc551e181b2460bb00eafb7add53194",
+      "ev_18d600f85de948099872156928775a27",
+      "ev_c7340f80802f4bd6ae56ae97df430bf5",
+      "ev_727e07d213b145cabd63dfe68fc13728",
+      "ev_a54a6f25f6fe4c9eadaf4480131298a1",
+      "ev_2b37a7427d53402680b71bead3b84e72"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8a7b83ff-7d98-47e9-b3b5-3ffabc978c40.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "instruction",
+    "goal_origin": "user_message",
+    "quality_score": 0.9,
+    "tasks_snapshot": [],
+    "consumed_at": "2026-04-22T15:41:04.114445+00:00",
+    "consumed_by_session_id": "8a7b83ff-7d98-47e9-b3b5-3ffabc978c40"
+  },
+  "decision_register": [
+    {
+      "id": "dec_beca07a847d643e8a698cf659da4e80c",
+      "kind": "constraint",
+      "summary": "**Found the root cause:** `svgCount: 0` — mermaid never rendered. Let me check for errors:",
+      "details": "**Found the root cause:** `svgCount: 0` — mermaid never rendered. Let me check for errors:",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_0bc551e181b2460bb00eafb7add53194"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_0bc551e181b2460bb00eafb7add53194",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\8a7b83ff-7d98-47e9-b3b5-3ffabc978c40.jsonl",
+      "content_hash": "sha256:da3fe28cf9a05216f88aaab6b3ad4e296eec8a6b7bc806db2122d86cff13ed2a"
+    },
+    {
+      "id": "ev_18d600f85de948099872156928775a27",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\.claude\\worktrees\\go-v2-artifact\\.claude\\skills\\go\\SKILL.md"
+    },
+    {
+      "id": "ev_c7340f80802f4bd6ae56ae97df430bf5",
+      "type": "file",
+      "label": "ralph-go-loop.sh",
+      "path": "P:\\.claude\\worktrees\\go-v2-artifact\\.claude\\skills\\go\\ralph-go-loop.sh"
+    },
+    {
+      "id": "ev_727e07d213b145cabd63dfe68fc13728",
+      "type": "file",
+      "label": "go-safe.sh",
+      "path": "P:\\.claude\\worktrees\\go-v2-artifact\\.claude\\skills\\go\\go-safe.sh"
+    },
+    {
+      "id": "ev_a54a6f25f6fe4c9eadaf4480131298a1",
+      "type": "file",
+      "label": "selected-task.schema.json",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go_new\\schemas\\selected-task.schema.json"
+    },
+    {
+      "id": "ev_2b37a7427d53402680b71bead3b84e72",
+      "type": "file",
+      "label": "run.schema.json",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go_new\\schemas\\run.schema.json"
+    }
+  ],
+  "checksum": "sha256:d66bbc940b2445f834472292218cbd64356e1389a4842f6faf1600d4aca6ed31"
+}
