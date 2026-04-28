@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "8727e7e0-bc5e-4347-a3ce-56ad5c182007",
+    "terminal_id": "console_f2d81ae7-c814-4255-bf6d-930e8f5a616e",
+    "source_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "created_at": "2026-04-28T04:02:00.018364+00:00",
+    "expires_at": "2026-04-28T04:22:00.018364+00:00",
+    "status": "rejected_stale",
+    "goal": "How fucking stupid are you?  Look for documentation on how to do that if you don't know.  you can look in /skill-craft",
+    "current_task": "How fucking stupid are you? Look for documentation on how to do that if you don't know. you can look in /skill-craft",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/planning/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/design/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/index.html",
+      "P:\\.claude\\skills\\gitpack\\SKILL.md",
+      "P:\\.claude\\skills\\gitpack\\scripts\\gitpack.py",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/.aid/skill-to-page/skill-to-page_sig.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html"
+    ],
+    "pending_operations": [
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/code/**",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/*.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/planning/SKILL.m",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: investigation on files: P:/packages/**/code/**.",
+    "decision_refs": [
+      "dec_1e67a9211e95437d96ccc74c893a874f"
+    ],
+    "evidence_refs": [
+      "ev_cf7b86909d724eb4b8af21e5c2951d46",
+      "ev_838d775b538c4cfb8580e492cea003e9",
+      "ev_bb82820f34874a10b39381aea92b08df",
+      "ev_60c112c0929a404ab577284ca85dccf8",
+      "ev_d916bc9abe464dccba36ea8d6845c25d",
+      "ev_85997a32bdc04f81b8f9f679302e0402"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "question",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "754f0d6e-3cef-4eaa-94cc-c50c615647b1"
+    ],
+    "last_user_message": "How fucking stupid are you?  Look for documentation on how to do that if you don't know.  you can look in /skill-craft",
+    "rejected_at": "2026-04-28T04:03:30.173292+00:00",
+    "rejected_by_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [
+    {
+      "id": "dec_1e67a9211e95437d96ccc74c893a874f",
+      "kind": "constraint",
+      "summary": "Please don't be an idiot. Read the skill properly and fully understand it.",
+      "details": "Please don't be an idiot. Read the skill properly and fully understand it.",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_cf7b86909d724eb4b8af21e5c2951d46"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_cf7b86909d724eb4b8af21e5c2951d46",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+      "content_hash": "sha256:22b53bf052e2f2abd65a864ff54556f4267f6dc115efcd5a12bf7c027f4eb211"
+    },
+    {
+      "id": "ev_838d775b538c4cfb8580e492cea003e9",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\code\\SKILL.md",
+      "content_hash": "sha256:1ec8dbd4da9f051d57402ac891526dd4b468768d2fe001a1f5a3be4e3b5f29eb"
+    },
+    {
+      "id": "ev_bb82820f34874a10b39381aea92b08df",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\SKILL.md",
+      "content_hash": "sha256:35446f53e1513d8d3d4cbf7f45e774493b5764c2844bb9c5803d8493708065e8"
+    },
+    {
+      "id": "ev_60c112c0929a404ab577284ca85dccf8",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\planning\\SKILL.md",
+      "content_hash": "sha256:2c591a091c841bf1f7d570d3a95ec71252dc54f8f8f193292d83a6777575eaba"
+    },
+    {
+      "id": "ev_d916bc9abe464dccba36ea8d6845c25d",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\design\\SKILL.md",
+      "content_hash": "sha256:76660f84745fd73fae53d41affb8231b1e85a217a23867fc59fc4aefd6b2db18"
+    },
+    {
+      "id": "ev_85997a32bdc04f81b8f9f679302e0402",
+      "type": "file",
+      "label": "index.html",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html",
+      "content_hash": "sha256:cfc31a995e05f3c66bc7fee2fccca017e1c5a33ae6f9f9d9e1a85d73bd4c7850"
+    }
+  ],
+  "checksum": "sha256:d2240d477c9d718e80647a2da31f03e22ab00470b0b787fce4ea518c445d8653",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "d14a0283",
+        "message": "chore(packages\\.github_repos\\browser-harness): update packages\\.github_repos\\browser-harness",
+        "timestamp": "2026-04-22 22:04:55 -0600"
+      }
+    }
+  }
+}
