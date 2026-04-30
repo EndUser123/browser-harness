@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "0655d27e-cefb-4a7e-b6a9-466da9d12e81",
+    "terminal_id": "console_f2d81ae7-c814-4255-bf6d-930e8f5a616e",
+    "source_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "created_at": "2026-04-30T01:39:07.758549+00:00",
+    "expires_at": "2026-04-30T01:59:07.758549+00:00",
+    "status": "rejected_stale",
+    "goal": "doesn't it have instructions for this situatation?",
+    "current_task": "doesn't it have instructions for this situatation?",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/planning/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/design/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/index.html",
+      "P:\\.claude\\skills\\gitpack\\SKILL.md",
+      "P:\\.claude\\skills\\gitpack\\scripts\\gitpack.py",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/.aid/skill-to-page/skill-to-page_sig.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html"
+    ],
+    "pending_operations": [
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/code/**",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/*.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/planning/SKILL.m",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: investigation on files: P:/packages/**/code/**.",
+    "decision_refs": [],
+    "evidence_refs": [
+      "ev_3661798b19ed40bb80c6f98f355df16e",
+      "ev_1a7c2704d42f44879f3b19c2c9ee59ee",
+      "ev_9882d648e0a24ae3a3d79bf576e41477",
+      "ev_274ee49f8e98457d9901855859be101e",
+      "ev_e58452a5c87b439ab568f91349f629e7",
+      "ev_b823f9b4dd0740f0b2e84c5e8a59c0a7"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "question",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "754f0d6e-3cef-4eaa-94cc-c50c615647b1"
+    ],
+    "last_user_message": "Can you do this for index.html and the skill?  <img src=\"https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png\" style=\"height:64px;margin-right:32px\"/>\n\n# We are trying to resize the mermaid pane so that I can see more of the diagram at once, but the LLM isn't able to do it.\n\nFound it. The `.mermaid-container` **has no height constraint**, so it's collapsing to fit content or being limited by the parent layout. The LLM can't add resizable behavior because the SKILL.md doesn't specify how the diagram pane should be sized.[^1][^2]\n\nHere's what needs to change:\n\n## Problem 1: No Height Defined for Mermaid Container[^1]\n\n```css\n.mermaid-container {\n  line-height: 0;\n  background: var(--surface-2);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-lg);\n  padding: 1rem;\n  overflow: auto;\n  /* ❌ MISSING: height constraint */\n}\n```\n\nShould be:\n\n```css\n.mermaid-container {\n  line-height: 0;\n  background: var(--surface-2);\n  border: 1px solid var(--border);\n  border-radius: var(--radius-lg);\n  padding: 1rem;\n  overflow: auto;\n  min-height: 600px;           /* ← Initial viewable height */\n  flex: 1;                      /* ← Grows to fill available space */\n}\n```\n\n\n***\n\n## Problem 2: No Resize Capability in SKILL.md[^2]\n\nThe SKILL.md Step 6 doesn't say: \"The Mermaid container must be resizable.\" So the LLM never generates the necessary JavaScript and HTML structure.[^2]\n\nAdd this to **Step 6 — Generate HTML** in SKILL.md:\n\n```markdown\n### Mermaid Pane Sizing & Resizing (REQUIRED)\n\nThe Mermaid diagram pane must be resizable by the user. This allows readers to see more/less of \nthe diagram while reading step descriptions.\n\n**HTML structure:**\n```html\n<div class=\"diagram-section\">\n  <div class=\"mermaid-container\" id=\"diagramPane\">\n    <pre class=\"mermaid\">{{ diagram_mmd }}</pre>\n  </div>\n  <div class=\"resize-handle\" id=\"diagramResizeHandle\" \n       aria-label=\"Drag to resize diagram pane\" \n       role=\"slider\" \n       aria-valuenow=\"600\"\n       aria-valuemin=\"300\"\n       aria-valuemax=\"1200\">\n    ```\n    <div class=\"resize-handle-line\"></div>\n    ```\n  </div>\n</div>\n```\n\n**CSS:**\n\n```css\n.diagram-section {\n  display: flex;\n  flex-direction: column;\n  gap: var(--space-4);\n  margin-bottom: var(--space-8);\n}\n\n.mermaid-container {\n  min-height: 600px;        /* Initial height — readable content without excessive scrolling */\n  flex: 1 1 auto;           /* Grows if parent is flex, but respects parent constraints */\n  overflow: auto;\n  border: 1px solid var(--border);\n  border-radius: var(--radius-lg);\n  position: relative;\n}\n\n.resize-handle {\n  height: 8px;\n  background: linear-gradient(90deg, transparent 30%, var(--accent) 50%, transparent 70%);\n  cursor: row-resize;\n  transition: background 140ms ease;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.resize-handle:hover,\n.resize-handle:focus-visible {\n  background: linear-gradient(90deg, transparent 30%, var(--accent-soft) 50%, transparent 70%);\n  outline: 2px solid var(--accent);\n  outline-offset: -4px;\n}\n\n.resize-handle-line {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 24px;\n  height: 2px;\n  transform: translate(-50%, -50%);\n  background: var(--accent);\n  border-radius: 1px;\n}\n```\n\n**JavaScript:**\n\n```javascript\nwindow.initDiagramResize = function() {\n  const container = document.getElementById('diagramPane');\n  const handle = document.getElementById('diagramResizeHandle');\n  if (!container || !handle) return;\n\n  let isResizing = false;\n  let startY = 0;\n  let startHeight = 0;\n  const minHeight = 300;\n  const maxHeight = 1200;\n\n  // Mouse events\n  handle.addEventListener('mousedown', startResize);\n  document.addEventListener('mousemove', handleResize);\n  document.addEventListener('mouseup', stopResize);\n\n  // Touch events\n  handle.addEventListener('touchstart', startResize);\n  document.addEventListener('touchmove', handleResize);\n  document.addEventListener('touchend', stopResize);\n\n  // Keyboard: Up/Down arrows to adjust size\n  handle.addEventListener('keydown', (e) => {\n    if (e.key === 'ArrowUp') {\n      e.preventDefault();\n      const delta = e.shiftKey ? -100 : -20;\n      const newHeight = Math.max(minHeight, container.clientHeight + delta);\n      container.style.height = newHeight + 'px';\n      updateAriaLabel();\n    } else if (e.key === 'ArrowDown') {\n      e.preventDefault();\n      const delta = e.shiftKey ? 100 : 20;\n      const newHeight = Math.min(maxHeight, container.clientHeight + delta);\n      container.style.height = newHeight + 'px';\n      updateAriaLabel();\n    }\n  });\n\n  function startResize(e) {\n    isResizing = true;\n    startY = e.type.includes('touch') ? e.touches.clientY : e.clientY;\n    startHeight = container.clientHeight;\n    handle.style.background = 'var(--accent)';\n    handle.setAttribute('aria-valuenow', startHeight);\n  }\n\n  function handleResize(e) {\n    if (!isResizing) return;\n    e.preventDefault();\n    const currentY = e.type.includes('touch') ? e.touches.clientY : e.clientY;\n    const delta = currentY - startY;\n    const newHeight = Math.max(minHeight, Math.min(maxHeight, startHeight + delta));\n    container.style.height = newHeight + 'px';\n    updateAriaLabel();\n  }\n\n  function stopResize() {\n    isResizing = false;\n    handle.style.background = '';\n  }\n\n  function updateAriaLabel() {\n    const height = container.clientHeight;\n    handle.setAttribute('aria-valuenow', height);\n  }\n};\n\n// Call on page load\nwindow.addEventListener('DOMContentLoaded', window.initDiagramResize);\n```\n\n**Step 7 Browser Verification (BLOCKING):**\n\n- [ ] Diagram pane renders at min-height: 600px initially\n- [ ] Resize handle is visible and labeled\n- [ ] Dragging the handle up decreases height, down increases (clamped 300-1200px)\n- [ ] Keyboard: Up/Down arrows adjust size (Shift+Arrow for larger jumps)\n- [ ] Touch: dragging on mobile resizes the pane\n- [ ] resize-handle has focus outline when focused\n- [ ] aria-valuenow updates as user resizes\n- [ ] After Mermaid re-renders, height persists (or resets to 600px)\n\n```\n\n***\n\n## Why the LLM can't do it[^2]\n\nThe SKILL.md says:\n\n> \"Build index.html from the workflow model: hero card, quick facts, Mermaid diagram, accordion per step...\"\n\nIt lists what goes in the HTML but **never specifies:**\n- Initial height for the diagram pane ❌\n- Whether it should be resizable ❌\n- How resizing is triggered (drag, buttons, etc.) ❌\n- Constraints (min/max size) ❌\n- Keyboard accessibility ❌\n\nSo the LLM generates a basic container, assumes `overflow:auto` will handle everything, and ships it. The LLM then passes the S7 browser verification (if it exists) because the diagram *renders* — it's technically not broken, just unusable for exploration.[^2]\n\n***\n\n## What to tell the LLM\n\nAdd the subsection above to Step 6 in SKILL.md. Then tell the LLM:\n\n> \"Step 6 now includes a Mermaid Pane Sizing & Resizing section with full HTML, CSS, and JavaScript. The resize handle must be implemented exactly as specified. Do not skip or abbreviate this section.\"\n\nAnd add a Step 7 verification check (the checklist above) to catch resizing failures before the page ships.\n\n***\n\n## Quick fix if you want it now\n\nAdd this to your HTML's `<style>` block:\n\n```css\n.mermaid-container {\n  min-height: 600px;\n  flex: 1 1 auto;\n  max-height: 90vh;\n}\n\n.diagram-section {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n\n.resize-handle {\n  height: 8px;\n  background: linear-gradient(90deg, transparent 30%, #66b3ff 50%, transparent 70%);\n  cursor: row-resize;\n  transition: background 140ms ease;\n}\n\n.resize-handle:hover {\n  background: #66b3ff;\n}\n```\n\n```\nAnd wrap your `.mermaid-container` in a `<div class=\"diagram-section\">` with a `<div class=\"resize-handle\">` below it. Then paste the JavaScript `initDiagramResize()` function into your `<script>` block and call `window.initDiagramResize()` after page load.\n```\n\nThat gives you a working resize handle without waiting for the LLM to fix it.\n\n<div align=\"center\">⁂</div>\n\n[^1]: index.html\n\n[^2]: SKILL.md",
+    "rejected_at": "2026-04-30T01:41:13.718607+00:00",
+    "rejected_by_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [],
+  "evidence_index": [
+    {
+      "id": "ev_3661798b19ed40bb80c6f98f355df16e",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+      "content_hash": "sha256:b33a7da2f373cdbbeced4c4e05cbc777b8a0cb1fd04467d19842d2ef7e2566a5"
+    },
+    {
+      "id": "ev_1a7c2704d42f44879f3b19c2c9ee59ee",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\code\\SKILL.md",
+      "content_hash": "sha256:1ec8dbd4da9f051d57402ac891526dd4b468768d2fe001a1f5a3be4e3b5f29eb"
+    },
+    {
+      "id": "ev_9882d648e0a24ae3a3d79bf576e41477",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\SKILL.md",
+      "content_hash": "sha256:35446f53e1513d8d3d4cbf7f45e774493b5764c2844bb9c5803d8493708065e8"
+    },
+    {
+      "id": "ev_274ee49f8e98457d9901855859be101e",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\planning\\SKILL.md",
+      "content_hash": "sha256:e95e0dc3a2bac20a6277efb50b15f7ba90f2350c2f43e6ba73f3503c3cec6d09"
+    },
+    {
+      "id": "ev_e58452a5c87b439ab568f91349f629e7",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\design\\SKILL.md",
+      "content_hash": "sha256:76660f84745fd73fae53d41affb8231b1e85a217a23867fc59fc4aefd6b2db18"
+    },
+    {
+      "id": "ev_b823f9b4dd0740f0b2e84c5e8a59c0a7",
+      "type": "file",
+      "label": "index.html",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html",
+      "content_hash": "sha256:cfc31a995e05f3c66bc7fee2fccca017e1c5a33ae6f9f9d9e1a85d73bd4c7850"
+    }
+  ],
+  "checksum": "sha256:5999ee3f7f654cd2538ea83be7b7914ce5b01aca4bc55a432c7d0312651ae967",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "de4cdf13",
+        "message": "chore(hooks): update hooks",
+        "timestamp": "2026-04-28 15:57:03 -0600"
+      }
+    }
+  }
+}

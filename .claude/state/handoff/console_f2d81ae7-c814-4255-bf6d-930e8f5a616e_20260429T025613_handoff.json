@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "2e28aafd-8ca7-4f41-8107-12e86cfcbff0",
+    "terminal_id": "console_f2d81ae7-c814-4255-bf6d-930e8f5a616e",
+    "source_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "created_at": "2026-04-29T02:56:13.537117+00:00",
+    "expires_at": "2026-04-29T03:16:13.537117+00:00",
+    "status": "rejected_stale",
+    "goal": "ok, fix file:///P:/packages/cc-skills-meta/skills/skill-to-page/index.html",
+    "current_task": "ok, fix file:///P:/packages/cc-skills-meta/skills/skill-to-page/index.html",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/planning/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/design/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/index.html",
+      "P:\\.claude\\skills\\gitpack\\SKILL.md",
+      "P:\\.claude\\skills\\gitpack\\scripts\\gitpack.py",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/.aid/skill-to-page/skill-to-page_sig.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html"
+    ],
+    "pending_operations": [
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/code/**",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/*.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/planning/SKILL.m",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: investigation on files: P:/packages/**/code/**.",
+    "decision_refs": [],
+    "evidence_refs": [
+      "ev_79fb0810b22244d28ad9032d9c263fee",
+      "ev_91fd94969b5c471aaef5609107693f2d",
+      "ev_8ecc64a495464b908931519ed308529b",
+      "ev_2b2f91f19781454da1aca3aa895f1960",
+      "ev_5c8ab7f425804a81a3f66afdd2f24914",
+      "ev_0d635f8540c648b5b775e21b907db574"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "instruction",
+    "goal_origin": "user_message",
+    "quality_score": 0.9,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "754f0d6e-3cef-4eaa-94cc-c50c615647b1"
+    ],
+    "last_user_message": "You are refactoring the Claude Code skill \"skill-to-page\".\n\nYour goal is to make the system reliably generate a valid, working index.html from SKILL.md.\n\nCurrent diagnosis:\n- The current skill leaks specification prose into the generated artifact.\n- The model is mixing policy text, example text, and final HTML/CSS/JS.\n- The current skill is too broad: parse + model + generate + validate + critique are entangled.\n- This causes malformed HTML/CSS/JS and false-positive “verified” outcomes.\n\nYour task:\nRefactor the skill into a staged compiler pipeline with strict output boundaries.\n\nRequired architecture:\nStage A: Source Extractor\n- Input: target SKILL.md\n- Output only: workflow-model.json\n- No HTML, no Mermaid, no prose artifact output\n- Extract:\n  - metadata\n  - workflow steps\n  - decisions\n  - route-outs\n  - terminal states\n  - artifacts\n  - verification requirements\n  - ambiguities\n\nStage B: Artifact Plan Builder\n- Input: workflow-model.json\n- Output only: artifact-plan.json\n- Define:\n  - page sections in order\n  - TOC entries\n  - accordion items\n  - badge types\n  - artifact cards\n  - proof summary fields\n  - Mermaid source payload\n- No final HTML yet\n\nStage C: HTML Emitter\n- Input only:\n  - artifact-plan.json\n  - a fixed HTML template contract\n- Output only:\n  - index.html\n- The emitter MUST NOT receive the long normative skill prose except the minimal template contract.\n- The emitter MUST fill placeholders in a known template.\n- The emitter MUST NOT invent sections not present in artifact-plan.json.\n- The emitter MUST NOT copy instructional prose into the final HTML.\n\nStage D: Static Validator\n- Input:\n  - index.html\n  - artifact-plan.json\n- Output only:\n  - static-validation.json\n- Checks:\n  - valid required DOM nodes present\n  - no duplicated forbidden prose blocks\n  - no raw policy headings rendered into final page\n  - required selectors present exactly\n  - no malformed CSS tokens such as:\n    - \"media max-width 960px\"\n    - \"tocToggle\" where \"#tocToggle\" is required\n    - \"h2first-of-type\" where \"h2:first-of-type\" is required\n  - no missing @media syntax\n  - no missing selector prefixes\n  - no placeholder strings\n- Any failure blocks success\n\nStage E: Runtime Validator\n- Input:\n  - index.html\n- Output only:\n  - artifact-proof.json\n- Browser assertions for TOC, mobile visibility, reflow, theme toggle, screenshots\n\nStage F: External Critic\n- Input:\n  - workflow-model.json\n  - artifact-plan.json\n  - index.html\n  - static-validation.json\n  - artifact-proof.json\n- Output only:\n  - validation-report.json\n- Must fail closed if any evidence is missing\n\nRequired refactor rules:\n1. The HTML emitter must be isolated from most of the skill prose.\n2. The system must use JSON as the source of truth between stages.\n3. No stage may output both spec and implementation in the same artifact.\n4. The skill must define explicit forbidden output leakage:\n   - no \"Side Panel TOC Contract\" text in final HTML\n   - no \"Required CSS Behavior\" text in final HTML unless intentionally rendered as documentation content from the source model\n   - no validator instructions in final HTML\n5. Add a “leakage check”:\n   - if final HTML contains internal control headings or policy-only text blocks, fail generation\n6. Add a malformed-selector check:\n   - fail if CSS contains bare identifiers where selectors need #, ., :, or @ syntax\n7. Reduce the HTML template to a fixed scaffold with placeholders, not freeform generation\n8. Keep TOC behavior rules, but move them into the HTML template contract, not the full narrative spec\n9. Make the validator compare final HTML against artifact-plan.json, not against the full prose skill\n10. Replace “generate HTML from workflow model” with “populate approved template from artifact-plan.json”\n\nOutput requested:\n1. A concise diagnosis\n2. Revised staged architecture\n3. Exact replacement text for:\n   - Step 6 Generate HTML\n   - a new Step 6.5 Static Validate HTML\n   - Step 7 Browser Verify Artifact\n   - Output Requirements\n4. A short section titled:\n   \"Routing policy for skill-to-page pipeline\"\n\nConstraints:\n- Be concrete\n- Prefer minimal structural change but do not preserve flawed architecture\n- Output deterministic, implementation-ready text\n- Do not write motivational advice",
+    "rejected_at": "2026-04-29T02:58:29.065192+00:00",
+    "rejected_by_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [],
+  "evidence_index": [
+    {
+      "id": "ev_79fb0810b22244d28ad9032d9c263fee",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+      "content_hash": "sha256:0dad73d584c8acf2b5d1c7389358f2f96f6f1a27c585b913a9d1aad279d65ea5"
+    },
+    {
+      "id": "ev_91fd94969b5c471aaef5609107693f2d",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\code\\SKILL.md",
+      "content_hash": "sha256:1ec8dbd4da9f051d57402ac891526dd4b468768d2fe001a1f5a3be4e3b5f29eb"
+    },
+    {
+      "id": "ev_8ecc64a495464b908931519ed308529b",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\SKILL.md",
+      "content_hash": "sha256:35446f53e1513d8d3d4cbf7f45e774493b5764c2844bb9c5803d8493708065e8"
+    },
+    {
+      "id": "ev_2b2f91f19781454da1aca3aa895f1960",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\planning\\SKILL.md",
+      "content_hash": "sha256:e95e0dc3a2bac20a6277efb50b15f7ba90f2350c2f43e6ba73f3503c3cec6d09"
+    },
+    {
+      "id": "ev_5c8ab7f425804a81a3f66afdd2f24914",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\design\\SKILL.md",
+      "content_hash": "sha256:76660f84745fd73fae53d41affb8231b1e85a217a23867fc59fc4aefd6b2db18"
+    },
+    {
+      "id": "ev_0d635f8540c648b5b775e21b907db574",
+      "type": "file",
+      "label": "index.html",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html",
+      "content_hash": "sha256:cfc31a995e05f3c66bc7fee2fccca017e1c5a33ae6f9f9d9e1a85d73bd4c7850"
+    }
+  ],
+  "checksum": "sha256:a1eaf7c549f76bea5f5d07379203311351fc5a2b8e6be86b7b142088933a0b12",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "de4cdf13",
+        "message": "chore(hooks): update hooks",
+        "timestamp": "2026-04-28 15:57:03 -0600"
+      }
+    }
+  }
+}

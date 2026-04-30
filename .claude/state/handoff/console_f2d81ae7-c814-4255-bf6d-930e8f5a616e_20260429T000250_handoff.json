@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "235f18f3-ea1b-481e-b707-71dd6f3bec26",
+    "terminal_id": "console_f2d81ae7-c814-4255-bf6d-930e8f5a616e",
+    "source_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "created_at": "2026-04-29T00:02:50.999334+00:00",
+    "expires_at": "2026-04-29T00:22:50.999334+00:00",
+    "status": "rejected_stale",
+    "goal": "[Request interrupted by user for tool use]",
+    "current_task": "[Request interrupted by user for tool use]",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/planning/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/design/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/index.html",
+      "P:\\.claude\\skills\\gitpack\\SKILL.md",
+      "P:\\.claude\\skills\\gitpack\\scripts\\gitpack.py",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/.aid/skill-to-page/skill-to-page_sig.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html"
+    ],
+    "pending_operations": [
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/code/**",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/*.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/planning/SKILL.m",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: investigation on files: P:/packages/**/code/**.",
+    "decision_refs": [
+      "dec_fd6f56f1c6344dbbb7a7f97c8e801c8b"
+    ],
+    "evidence_refs": [
+      "ev_3dd29a5449db450bb6b59e408c2eab6c",
+      "ev_fbce51591a554db7b80c1aae33ca24d2",
+      "ev_9daf6cd0fba5413aa083fbe8d6d3dbcf",
+      "ev_11bedf768f364f96bf99a23c971f58be",
+      "ev_82e15a27e04d4854ae5550b57150de77",
+      "ev_ba610c2ad2d84450aed4dfd8d7cf9746"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "instruction",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "754f0d6e-3cef-4eaa-94cc-c50c615647b1"
+    ],
+    "last_user_message": "implement this: \"The skill's self-referential nature and incomplete verification create a feedback loop where layout bugs persist despite specs. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400)\n\n## Root Causes\nLLM fails because **skill-to-page generates its own index.html from SKILL.md**, claiming \"verified\" via Step 7 CDP checks and Step 8 critic, but:\n- **Mobile toggle bug**: Spec says \"mobile button stays visible at top-left\" with `display: flex`, but generated CSS has `display: none`. Generation ignores/overrides spec. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/f980b678-3ea6-4603-936b-4ff47513fabb/index.html)\n- **Mixed transitions**: Spec mandates `left` transitions desktop/mobile for fixed-position immunity, but generated uses `transform: translateX(-100%)` on mobile `.toc.collapsed`, risking clipping. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400)\n- **Main shift misrepresented**: Spec describes `max-width` expansion, but reality is `margin-left` toggle (left-shift); LLM parrots prior buggy output. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/f980b678-3ea6-4603-936b-4ff47513fabb/index.html)\n- **Verification gaps**: Step 7 lists \"TOC initial state synced, content reflow\" but lacks **explicit mobile checks** or screenshot assertions for visual bugs. Orchestrator LLM (not agent-portable) skimps. Step 8 critic checks \"tocinitialstatesynced true\" semantically but misses runtime/mobile. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400)\n- **Self-generation vicious cycle**: Skill tests itself; bugs propagate as \"verified\" in proof-summary. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/f980b678-3ea6-4603-936b-4ff47513fabb/index.html)\n\nConsensus: LLM hallucinations + weak runtime tests = uncaught deviations. No external validator. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400)\n\n## Permanent Fixes\nUpdate SKILL.md with these **minimal, necessary changes** (reuse existing structure; no rewrite). Focus: enforceable specs, exhaustive tests.\n\n| Change | Where | Code/Rule | Why Actionable |\n|--------|-------|-----------|---------------|\n| Fix mobile toggle | CSS Rules > Responsive | Replace `media max-width 960px { #tocToggle { display: none; } }` with `display: flex; left: 0; top: 0.75rem;`  [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400) | Matches spec; always visible/CDP-clickable at (0,36). Test: Resize <960px, click edge. |\n| Unify transitions | CSS > .toc | Desktop/mobile: `transition: left 180ms ease; .collapsed { left: calc(-1 * var(--toc-width)); opacity: 0; pointer-events: none; }` No transform. | Fixed children immune; spec-compliant. |\n| Strengthen Step 7 | Browser Verify | Add 3 checks: 14. Mobile toggle visible (`await page.emulateMedia({width: 375}); expect(await page.$('#tocToggle')).not.null;`). 15. Edge click works (`await page.mouse.click(0, 36); expect(bodyClass).toContain('toc-hidden');`). 16. Screenshot diff (viewport 375x667 vs baseline.png). Timeout per-check 10s. | Catches visual/edge bugs; **require Puppeteer/CDP screenshots** in artifact-proof.json. |\n| Fix Step 8 gate | Artifact Critic | Add: \"Mobile TOC: resize <960px, toggle visible/functional; no display:none on #tocToggle.\" Fail if deviated. | Blocks buggy HTML. |\n| External test | New Step 9.5 (post-emit) | Route to **fixed validator skill** (non-self): `validate-skill-page index.html` with above Puppeteer script. Self-route-out on fail. | Breaks cycle; use sibling skill. |\n| Proof schema | Emit Proof | Add `layout: { mobileToggle: pass/fail, transitions: left-only, mainReflow: viewport-full }`  [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/a0006bc3-df3d-4289-b66b-898023aa207d/skill-to-page_full.md?AWSAccessKeyId=ASIA2F3EMEYE6UK7N3MA&Signature=CT9fE%2BMU5QyA4dJIComqvy66eKM%3D&x-amz-security-token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIQD7G%2BoMKWxhKdFCKTbWSn1bBkYRpHCKpCIh3nSHpTUcsAIgbPsujX8VYcxlaBeQRb3Z%2B%2FYrSngcGe6%2BTeEkvUbhnYsq%2FAQI6f%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2OTk3NTMzMDk3MDUiDMt3fDpIQnse4QoB5SrQBJAwm84twWiZsFDqI1j3RdjGcSEQAmHr5ne5R4nfPdZB20gwiSodMyk95x4IIkHH5QFko4I5IADVOqwEHY0AZVTIdPTJ7M6%2B1rpobkOJ61Mq2%2FFpmmwocsU9hxmCd3Kd6SCqOuccEldvQGBvH21Ezmw743VOHizBzSv71LklFJ1YYuI1ehRaA%2By96QZrDcQVEbV0toWGpdehYpC2AacPcW%2B0AOqIUwQAQuEOoPiT%2FohqZjMgjIBLBVt7mc7iN1sPjn%2FO0mG4LujRe48U2N5Yy4pw0UtpmUQkQpikIRsj9jKaT2IrK5442cPtLPBnxwZfFJud1RQg49SgOu64znFbHbAEwLcuLKSWxJm0ZUrChSKmk%2FwnQRcZ6ObAX20s0gapQCfwWzULUlXpNV05TrpB9k8tydgYPtnGqbz0V56LeJJbg3%2FLsJjvR8Mqxnk6ndKFmBD%2F%2Fp5%2B8HOle5m07ZPafU415ibTOhECWzCOlRBRmC8%2FRwINBQp7KM0sCrrGbLbafLmouq8bpBvYiwHJlXqsEh5qANlq%2BrTPVY%2Bmb6umDnDk3xYoXly2oLy396SSGrraqjeh9KZETM3mh8upHbq3VGciQ4mfLqSWuLq5qU16qj07x7YupbM%2F47Fcz70kBtJwdnvtLZ0y%2Fhpnhpxq205EEM74ZXe1gWPGgISSWWTY4f0muWkt5GWleIC%2BAC1Zzl6hedFxLTWvBsO%2F%2BkA0KVq%2FS2g2iOHwNgo4YCPZVu%2FiGd%2FPFvMjxElpX%2Fyll2%2FrCJZQIUr8La3JLGtEKSyL5BMxbi0wupDFzwY6mAGEMQGREa%2F5N0%2FoPJ7DtMgnzAcmKw55c7qwZiuuHjVeYfR1SCjNhV18ZYX2vHybEo%2Fr6h6WDfZ91gTKbmpS6Bzz6AT18i2V04AsC5bbQBqviJeIvvh3JmTdHqSPB4R7fGdtrjh4xpiWQ1SOHe3QsEGPNuCEDSibQbEW53Mw94RslGm%2FlJtZR8UxOJka0HKc3vzleAxIwc1Q6g%3D%3D&Expires=1777421400) | Machine-readable; future agents enforce. |\n\n## Concrete Next Steps\n1. **Patch SKILL.md**: Copy above table into \"HTML Authoring Rules\"; regenerate index.html via skill-to-page.\n2. **Test script** (Python/Puppeteer, save as validate.py):\n   ```python\n   from playwright.sync_api import sync_playwright\n   with sync_playwright() as p:\n       browser = p.chromium.launch(headless=False)\n       page = browser.new_page()\n       page.goto('file://path/to/index.html')  # Local file\n       # Mobile\n       page.set_viewport_size({\"width\": 375, \"height\": 667})\n       assert page.locator('#tocToggle').is_visible(), \"Mobile toggle hidden\"\n       page.mouse.click(0, 36)\n       assert 'toc-hidden' in page.locator('body').get_attribute('class')\n       # Screenshot\n       page.screenshot(path='test.png')\n       browser.close()\n   ```\n   Run: `python validate.py`; fail → route-out.\n3. **Orchestrator tweak**: In skill-craft/executor, post-Step9: if self-generated, dispatch `validate-skill-page`.\n4. **Version bump**: v2.1.0; emit `layoutBugsResolved: true` in proof.\n\nConfidence: High (direct from spec diffs); edge: Puppeteer deps (install via `pip install playwright; playwright install`). Assumption: Access to browser-harness tool. This reuses 95% existing work; bugs impossible post-fixes. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/149814877/f980b678-3ea6-4603-936b-4ff47513fabb/index.html)\"",
+    "rejected_at": "2026-04-29T00:05:39.761210+00:00",
+    "rejected_by_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [
+    {
+      "id": "dec_fd6f56f1c6344dbbb7a7f97c8e801c8b",
+      "kind": "constraint",
+      "summary": "The desktop is working fine. The problem must be mobile-specific. Let me check the mobile toggle:",
+      "details": "The desktop is working fine. The problem must be mobile-specific. Let me check the mobile toggle:",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_3dd29a5449db450bb6b59e408c2eab6c"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_3dd29a5449db450bb6b59e408c2eab6c",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+      "content_hash": "sha256:fd8259e243cf0e0a08f03572444456dfdd7f21504ab40fb3d362973da767c8f9"
+    },
+    {
+      "id": "ev_fbce51591a554db7b80c1aae33ca24d2",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\code\\SKILL.md",
+      "content_hash": "sha256:1ec8dbd4da9f051d57402ac891526dd4b468768d2fe001a1f5a3be4e3b5f29eb"
+    },
+    {
+      "id": "ev_9daf6cd0fba5413aa083fbe8d6d3dbcf",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\SKILL.md",
+      "content_hash": "sha256:35446f53e1513d8d3d4cbf7f45e774493b5764c2844bb9c5803d8493708065e8"
+    },
+    {
+      "id": "ev_11bedf768f364f96bf99a23c971f58be",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\planning\\SKILL.md",
+      "content_hash": "sha256:e95e0dc3a2bac20a6277efb50b15f7ba90f2350c2f43e6ba73f3503c3cec6d09"
+    },
+    {
+      "id": "ev_82e15a27e04d4854ae5550b57150de77",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\design\\SKILL.md",
+      "content_hash": "sha256:76660f84745fd73fae53d41affb8231b1e85a217a23867fc59fc4aefd6b2db18"
+    },
+    {
+      "id": "ev_ba610c2ad2d84450aed4dfd8d7cf9746",
+      "type": "file",
+      "label": "index.html",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html",
+      "content_hash": "sha256:cfc31a995e05f3c66bc7fee2fccca017e1c5a33ae6f9f9d9e1a85d73bd4c7850"
+    }
+  ],
+  "checksum": "sha256:33427313310ba47c66a5e990296eb0f64ff5eb8b5954f630782f56d3ba62f965",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "de4cdf13",
+        "message": "chore(hooks): update hooks",
+        "timestamp": "2026-04-28 15:57:03 -0600"
+      }
+    }
+  }
+}
