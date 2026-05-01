@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><body>
+<pre id=mermaidSource style="display:none">flowchart TD
+    A-->B
+</pre>
+<div id=stage></div>
+<div id=status>loading</div>
+<script type="module">
+window.__mermaidReady = import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs')
+  .then(function(m) { window.__mermaid = m.default; window.__loaded = true; document.getElementById('status').textContent = 'loaded'; })
+  .catch(function(e) { window.__mermaidError = e.message; document.getElementById('status').textContent = 'ERR:'+e.message; });
+window.__mermaidReady.then(function() {
+  initMermaid();
+  renderMermaid();
+});
+function initMermaid() {
+  if (!window.__mermaid) { console.error('no mermaid'); return; }
+  window.__mermaid.initialize({startOnLoad:false, theme:'base', flowchart:{curve:'basis'}});
+}
+async function renderMermaid() {
+  var stage = document.getElementById('stage');
+  var pre = document.getElementById('mermaidSource');
+  var id = 'mid-' + Date.now();
+  var src = pre.textContent;
+  var r = await window.__mermaid.render(id, src);
+  stage.innerHTML = r.svg;
+  document.getElementById('status').textContent += ' | svg:' + r.svg.length;
+}
+</script>
+</body></html>

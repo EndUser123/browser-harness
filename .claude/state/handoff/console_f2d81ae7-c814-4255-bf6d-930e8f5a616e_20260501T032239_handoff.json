@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "6e2c9a60-e166-4e79-91fc-fed1979658f3",
+    "terminal_id": "console_f2d81ae7-c814-4255-bf6d-930e8f5a616e",
+    "source_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "created_at": "2026-05-01T03:22:39.533209+00:00",
+    "expires_at": "2026-05-01T03:42:39.533209+00:00",
+    "status": "rejected_stale",
+    "goal": "please fix file:///P:/packages/cc-skills-meta/skills/skill-to-page/index.html",
+    "current_task": "please fix file:///P:/packages/cc-skills-meta/skills/skill-to-page/index.html",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/planning/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/design/SKILL.md",
+      "P:/packages/cc-skills-sdlc/skills/go/index.html",
+      "P:\\.claude\\skills\\gitpack\\SKILL.md",
+      "P:\\.claude\\skills\\gitpack\\scripts\\gitpack.py",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/.aid/skill-to-page/skill-to-page_sig.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html"
+    ],
+    "pending_operations": [
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/code/**",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/**/*.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:/packages/cc-skills-sdlc/skills/code/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/go/SKILL.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "investigation",
+        "target": "files: P:/packages/cc-skills-sdlc/skills/planning/SKILL.m",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: investigation on files: P:/packages/**/code/**.",
+    "decision_refs": [],
+    "evidence_refs": [
+      "ev_1009f1c6f08e42dd85738707c2c8f672",
+      "ev_c87e03ecbf744578891d2e084319d6ab",
+      "ev_07ab4feb7b834abebe4090e238f2f346",
+      "ev_e85e5123bac44e6abf866bb80e0f6f9b",
+      "ev_871891b33aef470f90402e3fafef0a4f",
+      "ev_2f742fd2971d445baeb2644f0cdcdd30"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "directive",
+    "goal_origin": "user_message",
+    "quality_score": 0.9,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "754f0d6e-3cef-4eaa-94cc-c50c615647b1"
+    ],
+    "last_user_message": "please fix file:///P:/packages/cc-skills-meta/skills/skill-to-page/index.html",
+    "rejected_at": "2026-05-01T03:24:14.157004+00:00",
+    "rejected_by_session_id": "754f0d6e-3cef-4eaa-94cc-c50c615647b1",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [],
+  "evidence_index": [
+    {
+      "id": "ev_1009f1c6f08e42dd85738707c2c8f672",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\754f0d6e-3cef-4eaa-94cc-c50c615647b1.jsonl",
+      "content_hash": "sha256:37cfd735d9b2a6675cc9762c7e85222b2333a22ff6754c797001cb50c6787f6d"
+    },
+    {
+      "id": "ev_c87e03ecbf744578891d2e084319d6ab",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\code\\SKILL.md",
+      "content_hash": "sha256:1ec8dbd4da9f051d57402ac891526dd4b468768d2fe001a1f5a3be4e3b5f29eb"
+    },
+    {
+      "id": "ev_07ab4feb7b834abebe4090e238f2f346",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\SKILL.md",
+      "content_hash": "sha256:35446f53e1513d8d3d4cbf7f45e774493b5764c2844bb9c5803d8493708065e8"
+    },
+    {
+      "id": "ev_e85e5123bac44e6abf866bb80e0f6f9b",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\planning\\SKILL.md",
+      "content_hash": "sha256:e95e0dc3a2bac20a6277efb50b15f7ba90f2350c2f43e6ba73f3503c3cec6d09"
+    },
+    {
+      "id": "ev_871891b33aef470f90402e3fafef0a4f",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\design\\SKILL.md",
+      "content_hash": "sha256:76660f84745fd73fae53d41affb8231b1e85a217a23867fc59fc4aefd6b2db18"
+    },
+    {
+      "id": "ev_2f742fd2971d445baeb2644f0cdcdd30",
+      "type": "file",
+      "label": "index.html",
+      "path": "P:\\packages\\cc-skills-sdlc\\skills\\go\\index.html",
+      "content_hash": "sha256:cfc31a995e05f3c66bc7fee2fccca017e1c5a33ae6f9f9d9e1a85d73bd4c7850"
+    }
+  ],
+  "checksum": "sha256:e8825db5566528df98a77f9c68b3259d91dd2bba8dbe3e55d16980223a6ef008",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "a191a340",
+        "message": "chore(hooks): update hooks",
+        "timestamp": "2026-04-30 19:02:47 -0600"
+      }
+    }
+  }
+}
