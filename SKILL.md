@@ -169,13 +169,11 @@ Chrome / Browser Use cloud -> CDP WS -> daemon.py -> /tmp/bu-<NAME>.sock -> run.
 - **Omnibox popups are fake `page` targets.** Filter `chrome://omnibox-popup...` and other internals when you need a real tab.
 - **CDP target order != Chrome's visible tab-strip order.** Use UI automation when the user means "the first/second tab I can see"; `Target.activateTarget` only shows a known target.
 - **Default daemon sessions can go stale.** `ensure_real_tab()` re-attaches to a real page.
-- **`no close frame received or sent` usually means a stale daemon / websocket.** Restart the daemon once with:
-  `uv run python - <<'PY'`
-  `from admin import restart_daemon`
-  `restart_daemon()`
-  `PY`
-  before assuming setup is wrong.
-- **If `restart_daemon()` also hangs**, kill Chrome entirely (`pkill -9 -f "Google Chrome"`), clean sockets (`rm -f /tmp/bu-default.sock /tmp/bu-default.pid`), reopen Chrome (`open -a "Google Chrome"`), wait 5s, then reconnect. This resets all CDP state.
+- **`no close frame received or sent` usually means a stale daemon/websocket.** Try these steps in order:
+  1. `restart_daemon()` — resets the CDP websocket without touching Chrome
+  2. If that also fails: clean only the harness socket (`del %TEMP%\bu-default.port /q 2>nul`) and call `ensure_daemon()` again — this reattaches to the existing Chrome debug session rather than launching a new one
+  3. Only if both above fail AND you have explicit user permission: identify the Chrome process holding the debug port via `netstat -ano | findstr :9222` and stop only that process — never use broad kills like `taskkill //F //IM chrome.exe` as that terminates ALL Chrome profiles including the user's unrelated sessions
+  4. After step 3, re-enable remote debugging on the user's Chrome manually if needed and reconnect
 - **Browser Use API is camelCase on the wire.** `cdpUrl`, `proxyCountryCode`, etc.
 - **Remote `cdpUrl` is HTTPS, not ws.** Resolve the websocket URL via `/json/version`.
 - **Stop cloud browsers with `PATCH /browsers/{id}` + `{\"action\":\"stop\"}`.**

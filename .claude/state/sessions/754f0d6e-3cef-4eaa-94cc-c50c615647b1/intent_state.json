@@ -1,0 +1,10 @@
+{
+  "current_intent": {
+    "work_type": "unknown",
+    "target": "use",
+    "problem": "Well, when I test it locally, I use file://",
+    "user_prompt": "Well, when I test it locally, I use file://",
+    "timestamp": "2026-04-30T22:56:34.608663+00:00"
+  },
+  "last_updated": "2026-04-30T22:56:34.613095+00:00"
+}
