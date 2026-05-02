@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "1efd0ab5-3398-44c2-81f1-6d0c9c1936a6",
+    "terminal_id": "console_979b4813-ac56-4a40-8a8a-b62c3cf1a422",
+    "source_session_id": "70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e",
+    "created_at": "2026-05-01T04:53:44.119442+00:00",
+    "expires_at": "2026-05-01T05:13:44.119442+00:00",
+    "status": "rejected_stale",
+    "goal": "Can you make those best practice updates?",
+    "current_task": "Can you make those best practice updates?",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "C:\\Users\\brsth\\Downloads\\do the needful so that we have a full working impl.md",
+      "P:/packages/cc-skills-meta/skills/skill-to-page/SKILL.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/SKILL.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/selection-rules.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/flowchart-guide.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/sequence-guide.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/class-guide.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/state-guide.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/references/guides/error-paths.md",
+      "P:/packages/cc-skills-meta/skills/doc-compiler/stage_g_validator.py"
+    ],
+    "pending_operations": [
+      {
+        "type": "read",
+        "target": "C:\\Users\\brsth\\Downloads\\do the needful so that we have a full working impl.md",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "ls \"P:/packages/.claude-plugin/skills/\" 2>/dev/null || ls \"P:/packages/skills/\" ",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "ls \"P:/packages/cc-skills-meta/skills/\"",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "ls \"P:/packages/cc-skills-sdlc/skills/\"",
+        "state": "in_progress"
+      },
+      {
+        "type": "command",
+        "target": "ls \"P:/packages/cc-skills-utils/skills/\"",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: read on C:\\Users\\brsth\\Downloads\\do the needful so that we have a full working impl.md.",
+    "decision_refs": [
+      "dec_64c3ab7567fa4693b8689134ee61d2fa",
+      "dec_3d61605741b040efbeac657974fcd741"
+    ],
+    "evidence_refs": [
+      "ev_3d04514b8a2a474bafbfdab87c54ef84",
+      "ev_7274a567fbb5458c885a8e7370f323b9",
+      "ev_9ed5b141efda4fb2a26eb939fce18a69",
+      "ev_1106b6d8b6c94b519f3ce80c0d03610b",
+      "ev_82fe6c3718d94a3ca6e6b54c6488dba1",
+      "ev_1d5bdfa0f6614e38841092152c4942a6"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e.jsonl",
+    "n_2_transcript_path": null,
+    "message_intent": "question",
+    "goal_origin": "user_message",
+    "quality_score": 0.4,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e"
+    ],
+    "last_user_message": "Can you make those best practice updates?",
+    "rejected_at": "2026-05-01T04:55:06.476517+00:00",
+    "rejected_by_session_id": "70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [
+    {
+      "id": "dec_64c3ab7567fa4693b8689134ee61d2fa",
+      "kind": "anti_goal",
+      "summary": "Let me write the file using Python directly to avoid heredoc delimiter issues.",
+      "details": "Let me write the file using Python directly to avoid heredoc delimiter issues.",
+      "priority": "medium",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_3d04514b8a2a474bafbfdab87c54ef84"
+      ]
+    },
+    {
+      "id": "dec_3d61605741b040efbeac657974fcd741",
+      "kind": "constraint",
+      "summary": "The issue is clear: `initTocToggle` is never defined and the click listener was never attached. Let me fix the browser script to define and call `initTocToggle` properly.",
+      "details": "The issue is clear: `initTocToggle` is never defined and the click listener was never attached. Let me fix the browser script to define and call `initTocToggle` properly.",
+      "priority": "high",
+      "applies_when": "Continue the current task after compact.",
+      "source_refs": [
+        "ev_3d04514b8a2a474bafbfdab87c54ef84"
+      ]
+    }
+  ],
+  "evidence_index": [
+    {
+      "id": "ev_3d04514b8a2a474bafbfdab87c54ef84",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e.jsonl",
+      "content_hash": "sha256:d3514f7df3740e4f7c7d745678f6ccef1fd5d67b6f3baa585a881cf90072970a"
+    },
+    {
+      "id": "ev_7274a567fbb5458c885a8e7370f323b9",
+      "type": "file",
+      "label": "do the needful so that we have a full working impl.md",
+      "path": "C:\\Users\\brsth\\Downloads\\do the needful so that we have a full working impl.md",
+      "content_hash": "sha256:715f6be063515a34befa678dc832f60a56b0be5a30d11b3a2cdf7adb211d2381"
+    },
+    {
+      "id": "ev_9ed5b141efda4fb2a26eb939fce18a69",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\skill-to-page\\SKILL.md",
+      "content_hash": "sha256:d0189b3eb236aba46e80eff503e6a93cadaa6a6bda9c32bbe64bd76675cbcd9a"
+    },
+    {
+      "id": "ev_1106b6d8b6c94b519f3ce80c0d03610b",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\SKILL.md",
+      "content_hash": "sha256:e99ebf08603dd2b8d44c92df5cd85edaf6dcee697c3cf18f9f977a7b67fb38c6"
+    },
+    {
+      "id": "ev_82fe6c3718d94a3ca6e6b54c6488dba1",
+      "type": "file",
+      "label": "selection-rules.md",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\references\\guides\\selection-rules.md",
+      "content_hash": "sha256:323994de6b6c502c6dda7db265161d2c58a94036c05ab29f512d828b42634a4b"
+    },
+    {
+      "id": "ev_1d5bdfa0f6614e38841092152c4942a6",
+      "type": "file",
+      "label": "flowchart-guide.md",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\references\\guides\\flowchart-guide.md",
+      "content_hash": "sha256:7d526cb9dd78225ce2673bbbc63ccacdf643379596fbc36f074011db58aa7672"
+    }
+  ],
+  "checksum": "sha256:741726095984f8a03cdc6771a24d490700afba5c4b8f205f8a123b42c6d19f23",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "8b4d5001",
+        "message": "chore(hooks): update hooks,tests",
+        "timestamp": "2026-04-30 22:06:33 -0600"
+      }
+    }
+  }
+}
