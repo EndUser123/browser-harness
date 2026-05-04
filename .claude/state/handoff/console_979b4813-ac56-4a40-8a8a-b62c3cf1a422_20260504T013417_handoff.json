@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "resume_snapshot": {
+    "schema_version": 2,
+    "snapshot_id": "968a1d7b-2f0b-43b1-9b55-f0fa5cd5d269",
+    "terminal_id": "console_979b4813-ac56-4a40-8a8a-b62c3cf1a422",
+    "source_session_id": "3f389751-c4fe-404d-8631-f04e2d05ce66",
+    "created_at": "2026-05-04T01:34:17.020053+00:00",
+    "expires_at": "2026-05-04T01:54:17.020053+00:00",
+    "status": "rejected_stale",
+    "goal": "You are fixing the final content-generation bugs in the doc-compiler skill. The LangGraph integration is complete and verified.\n\nCurrent status:\nStage A–H deterministic: PASS (index.html emitted)\nStage F (diagram gate): PASS\nStage I (static validator): 23/23 PASS  \nStage J (runtime validator): 7/9 PASS — J2 (TOC toggle) and J6 (Mermaid render) fail\nStage K (external critic): FAIL — sees truncated HTML (hero only, missing steps/route-outs)\nStage L (proof bundle): FAIL — correctly blocks due to J/K\n\nRoot causes:\n1. J2_toc_toggle: initTocToggle() not defined at module execution time → script ordering issue\n2. J6_mermaid_rendered: Mermaid ES module import runs after initMermaid() call → race condition\n3. Stage K truncation: Stage H emitter truncates HTML at hero, missing steps/route-outs sections\n\nYour task:\nFix these 3 bugs in the HTML emitter and JS initialization.\n\nExact requirements:\n1. J2: Ensure initTocToggle() is callable when Stage J runs the toggle test. Move the call to DOMContentLoaded or defer it.\n2. J6: Ensure Mermaid renders SVGs before the Stage J check. Delay initMermaid() until after module load, or use await import('mermaid').\n3. Truncation: Audit runtime/stage_h_template_html_emitter.py build_html() and ensure steps, route-outs, terminals, artifacts, and proof sections are actually assembled into the final HTML. Verify SECTION_ORDER includes all expected sections.\n\nPreserve:\n- All existing DOM IDs (tocToggle, themeToggle, searchInput, diagramViewport, diagramStage, zoomIn, zoomReset, diagramResizeHandle)\n- Stage I validator contracts (S1–S23)\n- Stage J runtime checks (J1–J9)\n- Current artifact names and JSON schemas\n\nImplementation rules:\n- Minimal changes only to affected files (runtime/stage_h_template_html_emitter.py, templates/, JS blocks)\n- No changes to LangGraph integration or orchestrator dispatch\n- No changes to validators\n- Preserve lazy LangGraph import and graph APIs\n- Add no new dependencies\n- Keep self-contained index.html\n\nDeliverables:\n1. Exact file diffs or full file replacements for changed files\n2. Re-run the genius/SKILL.md integration test\n3. Show updated Stage J: 9/9 PASS\n4. Show Stage K: PASS (no truncation)\n5. Show Stage L: PASS (certified)\n6. Confirm no validator regressions\n\nOutput format:\n- diffs first\n- test results table\n- final verdict\n\nDo not explain architecture. Fix the bugs. Rerun the test. Report results.",
+    "current_task": "You are fixing the final content-generation bugs in the doc-compiler skill. The LangGraph integration is complete and verified. Current status: Stage A–H deterministic: PASS (index.html emitted) Stage F (diagram gate): PASS Stage I (static validator): 23/23 PASS Stage J (runtime validator): 7/9 PASS — J2 (TOC toggle) and J6 (Mermaid render) fail Stage K (external critic): FAIL — sees truncated HTML (hero only, missing steps/route-outs) Stage L (proof bundle): FAIL — correctly blocks due to J/K Root causes: 1. J2_toc_toggle: initTocToggle() not defined at module execution time → script ordering issue 2. J6_mermaid_rendered: Mermaid ES module import runs after initMermaid() call → race condition 3. Stage K truncation: Stage H emitter truncates HTML at hero, missing steps/route-outs sections Your task: Fix these 3 bugs in the HTML emitter and JS initialization. Exact requirements: 1. J2: Ensure initTocToggle() is callable when Stage J runs the toggle test. Move the call to DOMContentLoaded or defer it. 2. J6: Ensure Mermaid renders SVGs before the Stage J check. Delay initMermaid() until after module load, or use await import('mermaid'). 3. Truncation: Audit runtime/stage_h_template_html_emitter.py build_html() and ensure steps, route-outs, terminals, artifacts, and proof sections are actually assembled into the final HTML. Verify SECTION_ORDER includes all expected sections. Preserve: - All existing DOM IDs (tocToggle, themeToggle, searchInput, diagramViewport, diagramStage, zoomIn, zoomReset, diagramResizeHandle) - Stage I validator contracts (S1–S23) - Stage J runtime checks (J1–J9) - Current artifact names and JSON schemas Implementation rules: - Minimal changes only to affected files (runtime/stage_h_template_html_emitter.py, templates/, JS blocks) - No changes to LangGraph integration or orchestrator dispatch - No changes to validators - Preserve lazy LangGraph import and graph APIs - Add no new dependencies - Keep self-contained index.html Deliverables: 1. Exact file diffs or full file replacements for changed files 2. Re-run the genius/SKILL.md integration test 3. Show updated Stage J: 9/9 PASS 4. Show Stage K: PASS (no truncation) 5. Show Stage L: PASS (certified) 6. Confirm no validator regressions Output format: - diffs first - test results table - final verdict Do not explain architecture. Fix the bugs. Rerun the test. Report results.",
+    "progress_percent": 65,
+    "progress_state": "in_progress",
+    "blockers": [],
+    "active_files": [
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/SKILL.md",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/stage_b_artifact_plan_builder.py",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/stage_e1_loader.py",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/stage_e3_assembler.py",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/stage_a_source_extractor.py",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/stage_e2_binder.py",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/templates/styles/presets.ini",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/templates/styles/deepwiki.css",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/templates/styles/product.css",
+      "P:/packages/.claude-marketplace/plugins/cc-skills-meta/skills/doc-compiler/templates/styles/minimal.css"
+    ],
+    "pending_operations": [
+      {
+        "type": "read",
+        "target": "P:\\packages\\.claude-marketplace\\plugins\\cc-skills-meta\\skills\\doc-compiler\\runtime\\stage_h_template_html_emitter.py",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\doc-model.json",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\source-model.json",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:\\packages\\.claude-marketplace\\plugins\\cc-skills-meta\\skills\\doc-compiler\\runtime\\stage_g_artifact_plan_builder.py",
+        "state": "in_progress"
+      },
+      {
+        "type": "read",
+        "target": "P:\\packages\\.claude-marketplace\\plugins\\cc-skills-meta\\skills\\doc-compiler\\runtime\\stage_j_runtime_validator.py",
+        "state": "in_progress"
+      }
+    ],
+    "next_step": "(advisory) Previous session had pending: read on P:\\packages\\.claude-marketplace\\plugins\\cc-skills-meta\\skills\\doc-compiler\\runtime\\stage_h_template_html_emitter.py.",
+    "decision_refs": [],
+    "evidence_refs": [
+      "ev_4510d1c23cca4a838a00f68b392cf5c4",
+      "ev_6a7d7d1682ac4abea6bc66c0a111be61",
+      "ev_6fa9305f0d53431e9034259c5016a133",
+      "ev_b42ce9cb1a7845efadd887667af3cc2d",
+      "ev_cf2e69b212194bc78c12e4c20210fdbb",
+      "ev_fabfd14049334f57a3843a93d8ab096f"
+    ],
+    "n_1_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\3f389751-c4fe-404d-8631-f04e2d05ce66.jsonl",
+    "n_2_transcript_path": "C:\\Users\\brsth\\.claude\\projects\\P--\\70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e.jsonl",
+    "message_intent": "unsupported_language",
+    "goal_origin": "user_message",
+    "quality_score": 0.9,
+    "tasks_snapshot": [],
+    "session_chain": [
+      "70e4fde4-9bb6-4b93-8885-3aafd0ae8e1e",
+      "3f389751-c4fe-404d-8631-f04e2d05ce66"
+    ],
+    "last_user_message": "You are modifying an existing doc-compiler / skill-to-page style compiler in a Claude Code skills repo.\n\nGoal:\nFix the current remaining failures with minimal, evidence-driven changes:\n1. Stage J2 TOC toggle failing at runtime\n2. Stage J6 Mermaid not rendering in local file:// execution\n3. Stage K external critic reporting missing steps 10-12 and missing route-outs section\n4. Preserve the already-fixed issues:\n   - Stage K truncation expanded to 40000 chars\n   - Stage K uses --system-prompt instead of --system\n   - Browser harness daemon restart moved into the browser script for a fresh daemon per run\n\nCritical constraints:\n- Investigate first. Do not start by rewriting files blindly.\n- Reuse proven existing code where it works.\n- Make minimal necessary changes.\n- Do not redesign the whole pipeline.\n- Do not remove validators.\n- Do not fake passes.\n- Do not return only a plan.\n- Do not say “omitted for brevity”.\n- If a validator cannot prove a behavior, improve the validator or runtime evidence.\n- Keep existing DOM contracts unless a change is strictly necessary and you update validators consistently.\n\nRepository tasks:\n1. Inspect the current pipeline stages A-L and identify the exact files implementing:\n   - TOC toggle behavior\n   - Mermaid runtime loading/rendering\n   - Stage G artifact plan building\n   - Stage J browser/runtime validation\n   - Stage K external critic prompt and comparison logic\n2. Confirm whether Stage K is incorrectly expecting 12 steps when the source model contains 9.\n3. Confirm whether route-outs are absent from the source model, absent from the artifact plan, or only absent from emitted HTML.\n4. Confirm whether Mermaid static ESM import fails in file:// while dynamic import succeeds, and if so implement the simplest robust loader.\n5. Confirm whether TOC toggle failure is caused by:\n   - missing DOM IDs/classes,\n   - incorrect initial state,\n   - function scoping,\n   - DOMContentLoaded timing,\n   - or class toggling against the wrong element.\n\nImplementation requirements:\n- Stage J must perform real runtime-oriented checks:\n  - clicking #tocToggle changes aria-expanded and expected classes/state\n  - Mermaid results in an actual SVG inside #diagramStage\n  - failures must be written as real check results, not inferred from function existence\n- Mermaid rendering must not rely on a fragile top-level timing assumption in file:// context\n- Stage K must critique against declared upstream artifacts:\n  - source-model.json\n  - doc-model.json\n  - diagram-plan.json\n  - artifact-plan.json\n  - emitted index.html\n- If source-model has 9 steps, K must not invent a 12-step expectation unless there is an upstream declared target requiring 12\n- Required sections like route-outs and terminals should be represented explicitly in the model/plan, even if empty, so “missing” can be distinguished from “empty”\n\nDeliverables:\n1. Concise audit of what you inspected and the root cause of each failure\n2. Exact file-by-file patches\n3. Full contents of every changed file\n4. A verification summary showing:\n   - which Stage J checks now pass,\n   - whether Mermaid renders in local file:// execution,\n   - whether TOC toggle mutates the expected runtime state,\n   - whether Stage K now evaluates against the real source/artifact plan,\n   - and any remaining risks or assumptions\n\nSuccess criteria:\n- No fake validator stubs\n- Stage J checks are evidence-based\n- Mermaid render proven by DOM result, not by assumed import success\n- TOC toggle proven by class/attribute change\n- Stage K no longer flags invented missing steps\n- Route-outs handling is explicit in model/plan/output\n- Stage L only certifies when J and K truly pass",
+    "rejected_at": "2026-05-04T01:36:08.425121+00:00",
+    "rejected_by_session_id": "3f389751-c4fe-404d-8631-f04e2d05ce66",
+    "rejection_reason": "snapshot evidence path outside project directory"
+  },
+  "decision_register": [],
+  "evidence_index": [
+    {
+      "id": "ev_4510d1c23cca4a838a00f68b392cf5c4",
+      "type": "transcript",
+      "label": "Current compact transcript",
+      "path": "C:\\Users\\brsth\\.claude\\projects\\P--\\3f389751-c4fe-404d-8631-f04e2d05ce66.jsonl",
+      "content_hash": "sha256:d1dad62d4c93e154047e28b525f606af13aa61f69d2c382aa4eb63acdb94113a"
+    },
+    {
+      "id": "ev_6a7d7d1682ac4abea6bc66c0a111be61",
+      "type": "file",
+      "label": "SKILL.md",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\SKILL.md",
+      "content_hash": "sha256:2d7f238dcec84b7640db0d0ac7e3e5344b56767c35cde34cb185feba244b47da"
+    },
+    {
+      "id": "ev_6fa9305f0d53431e9034259c5016a133",
+      "type": "file",
+      "label": "stage_b_artifact_plan_builder.py",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\stage_b_artifact_plan_builder.py",
+      "content_hash": "sha256:ea7aa6555a4bd1708675318ee261d4cd145a76f71fc30f11ac61ec5bba61f969"
+    },
+    {
+      "id": "ev_b42ce9cb1a7845efadd887667af3cc2d",
+      "type": "file",
+      "label": "stage_e1_loader.py",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\stage_e1_loader.py",
+      "content_hash": "sha256:7a2b81e196d2d731daf20309b598ad2fb4f9848ca83ce00221fca41e054298ce"
+    },
+    {
+      "id": "ev_cf2e69b212194bc78c12e4c20210fdbb",
+      "type": "file",
+      "label": "stage_e3_assembler.py",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\stage_e3_assembler.py",
+      "content_hash": "sha256:682d98c3c96799a94e323f2ece0d5bd8dc1565433fde87864ee4c197b075ae93"
+    },
+    {
+      "id": "ev_fabfd14049334f57a3843a93d8ab096f",
+      "type": "file",
+      "label": "stage_a_source_extractor.py",
+      "path": "P:\\packages\\cc-skills-meta\\skills\\doc-compiler\\stage_a_source_extractor.py",
+      "content_hash": "sha256:3a88de823e0fa2d4342a23e3223ea0b87b0b12ff64718373c70816ad45b6057c"
+    }
+  ],
+  "checksum": "sha256:3e9f8936f6ffe45bbbfc2b314173033618cb1f7a28ed4bf6efcb47e0ea17785d",
+  "environment_context": {
+    "git_state": {
+      "branch": "main",
+      "has_uncommitted_changes": true,
+      "last_commit": {
+        "hash": "4964a5d5",
+        "message": "chore(hooks): update hooks,tests",
+        "timestamp": "2026-05-02 16:57:07 -0600"
+      }
+    }
+  }
+}
